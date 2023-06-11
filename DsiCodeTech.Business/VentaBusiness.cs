@@ -177,5 +177,27 @@ namespace DsiCodeTech.Business
                 throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
             }
         }
+
+        /// <summary>
+        /// Este metodo se encarga de actualizar el campo upload de la entidad venta 
+        /// despues de enviarla a rabbitMQ
+        /// </summary>
+        /// <param name="IdVenta">el identificador de la venta</param>
+        /// <exception cref="BusinessException">excepcion en caso de no estar disponible el contexto</exception>
+        public void UpdateUploadField(Guid IdVenta)
+        {
+            try
+            {
+               venta venta = this.repository.SingleOrDefault(v => v.id_venta == IdVenta);
+                venta.upload = true;
+                this.repository.Update(venta);
+            }
+            catch (Exception ex) when (ex is DataException || ex is SqlException)
+            {
+
+                throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
+            }
+        }
+
     }
 }

@@ -460,6 +460,7 @@ namespace SuPlazaPOS35.controller
             venta.ieps_desglosado = ieps;
             venta.impuestos = impuestos;
             venta.descuento = descuento;
+            venta.upload = false;
 
             int num = 1;
             List<SuPlazaPOS35.domain.venta_articulo> itemsSales = getItemsSales();
@@ -609,6 +610,7 @@ namespace SuPlazaPOS35.controller
             venta_devolucion.cant_dev = total;
             venta_devolucion.descuento = descuento;
             venta_devolucion.impuestos = impuestos;
+            venta_devolucion.upload = false;
             dataClassesPOSDataContext.venta_devolucion.InsertOnSubmit(venta_devolucion);
             dataClassesPOSDataContext.SubmitChanges();
             foreach (SuPlazaPOS35.domain.venta_articulo va in sale.venta_articulo)

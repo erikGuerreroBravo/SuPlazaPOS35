@@ -20,6 +20,13 @@ namespace DsiCodeTech.Business
         private readonly IUnitOfWork _unitOfWork;
         private readonly VentaDevolucionRepository _ventaDevolucionRepository;
 
+
+        public VentaDevolucionBusiness()
+        {
+            _unitOfWork = new UnitOfWork();
+            _ventaDevolucionRepository = new VentaDevolucionRepository(_unitOfWork);
+        }
+
         public VentaDevolucionBusiness(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -37,6 +44,29 @@ namespace DsiCodeTech.Business
             {
 
                 throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
+            }
+        }
+
+
+        /// <summary>
+        /// Este metodo se encarga de actualizar el campo upload a verdadero cuando existe el envio correo de la
+        /// devolucion a rabbitMQ
+        /// </summary>
+        /// <param name="ventaDevolucion">la entidad venta_devolucion</param>
+        /// <exception cref="BusinessException">excepcion generada por no tener acceso al contexto o actualizacion del campo</exception>
+        public void UpdateUploadField(Guid id_devolucion)
+        {
+            
+            try
+            {
+                venta_devolucion ventaDv = this._ventaDevolucionRepository.SingleOrDefault(v => v.id_devolucion == id_devolucion);
+                ventaDv.upload = true;
+                this._ventaDevolucionRepository.Update(ventaDv);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
+
             }
         }
     }

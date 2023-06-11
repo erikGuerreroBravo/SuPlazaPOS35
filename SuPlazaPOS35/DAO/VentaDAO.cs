@@ -237,19 +237,7 @@ namespace SuPlazaPOS35.DAO
         #endregion
 
         #region Metodo Corregido para la Venta del Sistema SaleOut
-        //public void SaleOut(SuPlazaPOS35.domain.venta v)
-        //{
-        //    string sql = string.Format("INSERT INTO venta(id_pos,id_venta,vendedor,folio,fecha_venta,total_vendido,pago_efectivo,pago_vales,pago_tc,pago_td,pago_spei,num_registros) VALUES( {0}, '{1}','{2}',{3},'{4}','{5}','{6}','{7}','{8}','{9}','{10}',{11})", v.id_pos,v.id_venta,v.vendedor,v.folio,v.fecha_venta,v.total_vendido.ToString("F3"),v.pago_efectivo.ToString("F3"),v.pago_vales.ToString("F3"),v.pago_tc.ToString("F3"),v.pago_td.ToString("F3"),v.pago_spei.ToString("F3"), v.venta_articulo.Count);
-        //    //ejecutamos la sentencia de sql
-        //    ExecuteSQL(sql);
-        //    //iteramos sobre la coleccion que se lleva la venta y dentro contiene la venta articulo con todos los items de la venta
-        //    foreach (SuPlazaPOS35.domain.venta_articulo item in v.venta_articulo)
-        //    {
-        //        sql = String.Format("INSERT INTO venta_articulo(id_pos,id_venta,no_articulo,cod_barras,cantidad,articulo_ofertado,precio_regular,cambio_precio,iva,precio_vta,porcent_desc,ieps,precio_compra,utilidad,user_name) VALUES({0},'{1}',{2},'{3}',{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14})", item.id_pos,item.id_venta,item.no_articulo, item.cod_barras,item.cantidad, item.articulo_ofertado ? "1": "0", item.precio_regular.ToString("F3"),item.cambio_precio ? "1": "0", item.iva.ToString("F3"), item.precio_vta.ToString("F3"), item.porcent_desc.ToString("F3"), item.ieps.HasValue ? item.ieps : 0, item.precio_compra.ToString("F3"), item.utilidad.ToString("F3"), (item.user_name != null) ? $"'{item.user_name}'" : "NULL");
-        //        ExecuteSQL(sql);
-        //    }
-
-        //}
+       
 
         public SuPlazaPOS35.domain.venta SaleOut(SuPlazaPOS35.domain.venta v)
         {

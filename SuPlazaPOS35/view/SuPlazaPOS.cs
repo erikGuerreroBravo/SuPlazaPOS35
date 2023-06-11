@@ -24,6 +24,7 @@ using NLog;
 
 using Newtonsoft;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace SuPlazaPOS35.view
 {
@@ -511,10 +512,24 @@ namespace SuPlazaPOS35.view
                 else if (statusModeOperation.CompareTo(modeOperation.Devolution) == 0 && sale.total > 0m)
                 {
                     SuPlazaPOS35.domain.venta_devolucion venta_devolucion = sale.setDevolution();
-                    IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                    rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
                     devOpos.printTicketDevolutionOnPosPrinter(venta_devolucion.id_devolucion);
                     newSale();
+                    using (CancellationTokenSource cts = new CancellationTokenSource())
+                    {
+                        CancellationToken token = cts.Token;
+                        Task work = Task.Run(() =>
+                        {
+                            if (token.IsCancellationRequested) 
+                            {
+                                IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                                rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
+                                IVentaDevolucionBusiness ventaDBusiness = new VentaDevolucionBusiness();
+                                ventaDBusiness.UpdateUploadField(venta_devolucion.id_devolucion);
+                            }
+                        });
+
+                        work.Wait();
+                    };
                 }
             }
             catch (Exception ex)
@@ -565,14 +580,25 @@ namespace SuPlazaPOS35.view
                     no_articulo = venta.num_registros,
 
                 };
+
                 devOpos.printTicketSaleOnPosPrinter(entidad);
 
-
-                IVentaBusiness IventaBusiness = new VentaBusiness();
-                VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
-                //IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                //rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
-
+                using (CancellationTokenSource cts = new CancellationTokenSource())
+                {
+                    CancellationToken token = cts.Token;
+                    Task work= Task.Run(() =>
+                    {
+                        if (token.IsCancellationRequested)
+                        {
+                            IVentaBusiness IventaBusiness = new VentaBusiness();
+                            VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
+                            IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                            rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
+                            IventaBusiness.UpdateUploadField(venta.id_venta);
+                        }
+                    });
+                    work.Wait();
+                };
             }
             catch (Exception ex)
             {
@@ -824,12 +850,24 @@ namespace SuPlazaPOS35.view
                 {
                     ///modifcamos este apartado para  acoplarlo a rabbitMQ
                     Guid idVentaCancelada = sale.saleCancelOrSuspend(POS.SaleRecovery ? "suspecancel" : "cancelada");
+                    #region Envio de Venta Cancelada Rabbit
+                    using (CancellationTokenSource cts = new CancellationTokenSource())
+                    {
+                        CancellationToken token = cts.Token;
+                        Task work = Task.Run(() =>
+                        {
+                            if (token.IsCancellationRequested)
+                            {
+                                IVentaCanceladaBusiness ventaCancelada = new VentaCanceladaBusiness();
+                                VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
+                                IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                                rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
+                                ventaCancelada.UpdateUploadField(idVentaCancelada);
+                            }
+                        });
 
-                    #region Envio a Rabbit Venta Cancelada
-                    IVentaCanceladaBusiness ventaCancelada = new VentaCanceladaBusiness();
-                    VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
-                    IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                    rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
+                        work.Wait();
+                    };
                     #endregion
                     newSale();
                 }
@@ -1504,8 +1542,8 @@ namespace SuPlazaPOS35.view
             // 
             // tlsCaja
             // 
-            this.tlsCaja.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+            this.tlsCaja.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.tlsCaja.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.tlsCaja.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -1516,8 +1554,8 @@ namespace SuPlazaPOS35.view
             // 
             // tlsUsuario
             // 
-            this.tlsUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+            this.tlsUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.tlsUsuario.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.tlsUsuario.Name = "tlsUsuario";
@@ -1526,8 +1564,8 @@ namespace SuPlazaPOS35.view
             // 
             // tlsStatusSync
             // 
-            this.tlsStatusSync.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+            this.tlsStatusSync.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.tlsStatusSync.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.tlsStatusSync.Name = "tlsStatusSync";
@@ -1537,8 +1575,8 @@ namespace SuPlazaPOS35.view
             // 
             // tlsFecha
             // 
-            this.tlsFecha.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+            this.tlsFecha.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.tlsFecha.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.tlsFecha.Name = "tlsFecha";
@@ -1548,8 +1586,8 @@ namespace SuPlazaPOS35.view
             // 
             // tlsHour
             // 
-            this.tlsHour.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+            this.tlsHour.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.tlsHour.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.tlsHour.Name = "tlsHour";
@@ -2259,6 +2297,7 @@ namespace SuPlazaPOS35.view
                 ventaDevolucion.NoArticulo = a.NoArticulo;
                 ventaDevolucion.CodBarras = a.CodBarras;
                 ventaDevolucion.Cantidad = a.Cantidad;
+                
                 Articulos.Add(ventaDevolucion);
             }
 
@@ -2272,6 +2311,8 @@ namespace SuPlazaPOS35.view
                 Vendedor = venta_Devolucion.vendedor,
                 Supervisor = venta_Devolucion.supervisor,
                 CantidadDevuelta = venta_Devolucion.cant_dev,
+                Impuestos = venta_Devolucion.impuestos,
+                Descuento = venta_Devolucion.descuento,
                 Upload = true,
                 Articulos = Articulos
             };
