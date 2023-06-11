@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E84392F3-1B09-4621-8CF0-3309D2526A9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DsiCodeTech.Common</RootNamespace>
+    <AssemblyName>DsiCodeTech.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>10</LangVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constant\DsiCodeConst.cs" />
+    <Compile Include="Constant\ImpuestoType.cs" />
+    <Compile Include="Constant\RfcType.cs" />
+    <Compile Include="Constant\StatusType.cs" />
+    <Compile Include="DataAccess\Domain\ArchivoDM.cs" />
+    <Compile Include="DataAccess\Domain\CapturaInventarioDM.cs" />
+    <Compile Include="DataAccess\Domain\CategoriaDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiFormaPagoDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiMetodoPagoDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiTipoComprobanteDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiTipoRelacionDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiUsoCfdiDM.cs" />
+    <Compile Include="DataAccess\Domain\ClienteDM.cs" />
+    <Compile Include="DataAccess\Domain\DireccionClienteDM.cs" />
+    <Compile Include="DataAccess\Domain\EmpresaDM.cs" />
+    <Compile Include="DataAccess\Domain\EntidadDM.cs" />
+    <Compile Include="DataAccess\Domain\FacturaDM.cs" />
+    <Compile Include="DataAccess\Domain\FacturaRelacionDM.cs" />
+    <Compile Include="DataAccess\Domain\FacturaVentaDM.cs" />
+    <Compile Include="DataAccess\Domain\ImpuestoDM.cs" />
+    <Compile Include="DataAccess\Domain\MunicipioDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiObjetoImpuestoDM.cs" />
+    <Compile Include="DataAccess\Domain\OrdenDM.cs" />
+    <Compile Include="DataAccess\Domain\OrdenArticuloDM.cs" />
+    <Compile Include="DataAccess\Domain\InventarioFisicoDM.cs" />
+    <Compile Include="DataAccess\Domain\ArticuloDM.cs" />
+    <Compile Include="DataAccess\Domain\CompraDM.cs" />
+    <Compile Include="DataAccess\Domain\CompraArticuloDM.cs" />
+    <Compile Include="DataAccess\Domain\CfdiRegimenFiscalDM.cs" />
+    <Compile Include="DataAccess\Domain\PosCajaDM.cs" />
+    <Compile Include="DataAccess\Domain\UnidadMedidaDM.cs" />
+    <Compile Include="DataAccess\Domain\UsuarioDM.cs" />
+    <Compile Include="DataAccess\Domain\UsuarioPermisoDM.cs" />
+    <Compile Include="DataAccess\Domain\ProveedorDM.cs" />
+    <Compile Include="DataAccess\Domain\UuidRelacionDM.cs" />
+    <Compile Include="DataAccess\Domain\VentaArticuloDM.cs" />
+    <Compile Include="DataAccess\Domain\VentaCanceladaDM.cs" />
+    <Compile Include="DataAccess\Domain\VentaCanceladaArticulo.cs" />
+    <Compile Include="DataAccess\Domain\VentaDevolucionArticuloDM.cs" />
+    <Compile Include="DataAccess\Domain\VentaDevolucionDM.cs" />
+    <Compile Include="DataAccess\Domain\VentaDM.cs" />
+    <Compile Include="DataAccess\Extensions\PredicateBuilder.cs" />
+    <Compile Include="DataAccess\Filter\Page\PageRequest.cs" />
+    <Compile Include="DataAccess\Filter\Page\PageResponse.cs" />
+    <Compile Include="DataAccess\Filter\Query\ArticuloQuery.cs" />
+    <Compile Include="DataAccess\Filter\Query\ClienteQuery.cs" />
+    <Compile Include="DataAccess\Filter\Query\FacturaQuery.cs" />
+    <Compile Include="DataAccess\Filter\Query\InventarioFisicoQuery.cs" />
+    <Compile Include="DataAccess\Filter\Query\KitArticuloQuery.cs" />
+    <Compile Include="DataAccess\Filter\Query\VentaQuery.cs" />
+    <Compile Include="DataAccess\Filter\Sort\Direction.cs" />
+    <Compile Include="DataAccess\Filter\Sort\Sorting.cs" />
+    <Compile Include="DataAccess\Infraestructure\BaseRepository.cs" />
+    <Compile Include="DataAccess\Infraestructure\Contract\IBaseRepository.cs" />
+    <Compile Include="DataAccess\Infraestructure\Contract\IPagingAndSortingRepository.cs" />
+    <Compile Include="DataAccess\Infraestructure\Contract\IUnitOfWork.cs" />
+    <Compile Include="Exception\BusinessException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\AesCrypto.cs" />
+    <Compile Include="Util\DsiCodeUtil.cs" />
+    <Compile Include="Util\SqlInjectConnection.cs" />
+    <Compile Include="Web\DataTransfer\HttpResponseOnError.cs" />
+    <Compile Include="Web\DataTransfer\RequestWrapper.cs" />
+    <Compile Include="Web\DataTransfer\ResponseWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30c5105048ce4c6484d115d98375e6e4" Name="Diagram1">
+        <EntityTypeShape EntityType="pos_cajaModel.articulo" Width="1.5" PointX="8" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.cfdi_objeto_impuesto" Width="1.5" PointX="5.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.empleado" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.empresa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.factura_venta" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.impuestos" Width="1.5" PointX="10.25" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.oferta" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.oferta_articulo" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.permiso" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.pos_control" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.pos_settings" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.promocion" Width="1.5" PointX="8" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.promocion_articulo" Width="1.5" PointX="10.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.unidad_medida" Width="1.5" PointX="5.75" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.usuario" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.usuario_permiso" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.venta_cancelada_articulo" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.venta_devolucion" Width="1.5" PointX="13.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_cajaModel.venta_devolucion_articulo" Width="1.5" PointX="15.5" PointY="19.375" IsExpanded="true" />
+        <AssociationConnector Association="pos_cajaModel.Fk_articulo_objetoimpuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_articulo_oferta" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_articulo_promocion" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_articulo_venta_cancelada" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.Fk_impuesto_articulos" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_unidad_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_oferta_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_oferta" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_permiso_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_pos_control" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.usuario_pos_control" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_promocion_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_devolucion_supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_devolucion_vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_permiso" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_cancelada_articulo_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_devolucion_articulo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pos_cajaModel.venta_cancelada" Width="1.5" PointX="6" PointY="6.625" />
+        <AssociationConnector Association="pos_cajaModel.fk_pos_venta_cancelada" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_cancelada_supervisor" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_cancelada_vendedor" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_cancelada_articulo" />
+        <EntityTypeShape EntityType="pos_cajaModel.venta" Width="1.5" PointX="9" PointY="6.25" />
+        <EntityTypeShape EntityType="pos_cajaModel.venta_articulo" Width="1.5" PointX="13.25" PointY="23.125" />
+        <AssociationConnector Association="pos_cajaModel.fk_articulo_venta" />
+        <AssociationConnector Association="pos_cajaModel.fk_pos_venta" />
+        <AssociationConnector Association="pos_cajaModel.fk_promocion_venta_articulo" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_cambia_precio" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_cancelacion" />
+        <AssociationConnector Association="pos_cajaModel.fk_usuario_venta" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_articulo" />
+        <AssociationConnector Association="pos_cajaModel.fk_venta_devolucion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

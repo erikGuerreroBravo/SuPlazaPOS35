@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{721930D5-A2E8-4204-A363-74992D3761BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SuPlazaPOS35</RootNamespace>
+    <AssemblyName>SuPlazaPOS35</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <LangVersion>10</LangVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SuPlazaPOS35.MainPOS</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SuPlazaPOS35_32512.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DsiCodeTech.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Common\DsiCodeTech.Common\bin\Debug\DsiCodeTech.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.PointOfService, Version=1.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\Microsoft.PointOfService.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.2.0\lib\net46\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.6.5.0\lib\net461\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.7.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controller\DevicesOPOS.cs" />
+    <Compile Include="controller\DevicesWindows.cs" />
+    <Compile Include="controller\POS.cs" />
+    <Compile Include="controller\SuPlazaPosUtil.cs" />
+    <Compile Include="DAO\ArticuloDAO.cs" />
+    <Compile Include="DAO\CorteDAO.cs" />
+    <Compile Include="DAO\DownloadDataTables.cs" />
+    <Compile Include="DAO\EmpleadoDAO.cs" />
+    <Compile Include="DAO\POSCaja.cs" />
+    <Compile Include="DAO\SuspencionDAO.cs" />
+    <Compile Include="DAO\VentaArticuloDAO.cs" />
+    <Compile Include="DAO\VentaCanceladaDAO.cs" />
+    <Compile Include="DAO\VentaDAO.cs" />
+    <Compile Include="DAO\VentaDevolucionDAO.cs" />
+    <Compile Include="DomainServer\pos_admin.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pos_admin.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="domain\articulo.cs" />
+    <Compile Include="domain\DataClassesPOS.cs">
+      <DependentUpon>DataClassesPOS.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="domain\DataClassesPOS.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesPOS.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="domain\empleado.cs" />
+    <Compile Include="domain\factura_venta.cs" />
+    <Compile Include="domain\impuestos.cs" />
+    <Compile Include="domain\oferta.cs" />
+    <Compile Include="domain\oferta_articulo.cs" />
+    <Compile Include="domain\permiso.cs" />
+    <Compile Include="domain\pos_settings.cs" />
+    <Compile Include="domain\promocion.cs" />
+    <Compile Include="domain\promocion_articulo.cs" />
+    <Compile Include="domain\unidad_medida.cs" />
+    <Compile Include="domain\usuario.cs" />
+    <Compile Include="domain\usuario_permiso.cs" />
+    <Compile Include="domain\venta.cs" />
+    <Compile Include="domain\venta_articulo.cs" />
+    <Compile Include="domain\venta_cancelada_articulo.cs" />
+    <Compile Include="domain\venta_devolucion.cs" />
+    <Compile Include="domain\venta_devolucion_articulo.cs" />
+    <Compile Include="model\corte.cs" />
+    <Compile Include="model\empleado.cs" />
+    <Compile Include="model\empresa.cs" />
+    <Compile Include="model\totales.cs" />
+    <Compile Include="model\venta.cs" />
+    <Compile Include="model\venta_articulo.cs" />
+    <Compile Include="model\venta_cancelada.cs" />
+    <Compile Include="model\venta_cancelada_articulo.cs" />
+    <Compile Include="model\venta_devolucion.cs" />
+    <Compile Include="model\venta_devolucion_articulo.cs" />
+    <Compile Include="MainPOS.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Remote\Implement\VentaRemoteImpl.cs" />
+    <Compile Include="Remote\IVentaCancelacionRemote.cs" />
+    <Compile Include="Remote\IVentaDevolucionRemote.cs" />
+    <Compile Include="Remote\IVentaRemote.cs" />
+    <Compile Include="ResourcesPOS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesPOS.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Synchronizer\CtrlException.cs" />
+    <Compile Include="Synchronizer\Download.cs" />
+    <Compile Include="view\Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FunctionsPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SuPlazaPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ValidateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ResourcesPOS.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesPOS.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Config.resx">
+      <DependentUpon>Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\FunctionsPOS.resx">
+      <DependentUpon>FunctionsPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SuPlazaPOS.resx">
+      <DependentUpon>SuPlazaPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ValidateUser.resx">
+      <DependentUpon>ValidateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="DomainServer\pos_admin.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>pos_admin.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DomainServer\pos_admin.dbml.layout">
+      <DependentUpon>pos_admin.dbml</DependentUpon>
+    </None>
+    <None Include="domain\DataClassesPOS.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesPOS.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="domain\DataClassesPOS.dbml.layout">
+      <DependentUpon>DataClassesPOS.dbml</DependentUpon>
+    </None>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opened37.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\discount4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\devolucion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SuPlazaPOS35_32512.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.Business\DsiCodeTech.Business.csproj">
+      <Project>{5B141605-59E9-4D68-8C40-D9AE46F37732}</Project>
+      <Name>DsiCodeTech.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DsiCodetech.RabbitMQ\DsiCodetech.RabbitMQ.csproj">
+      <Project>{3e64d4cb-6b20-42e4-bcc2-5b091e1d68ce}</Project>
+      <Name>DsiCodetech.RabbitMQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DsiCodeTech.Repository\DsiCodeTech.Repository.csproj">
+      <Project>{BF8C6CBB-F93E-4759-B376-6A59EA4A7D5C}</Project>
+      <Name>DsiCodeTech.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
