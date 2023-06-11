@@ -501,7 +501,7 @@ namespace SuPlazaPOS35.view
                         threadPOS = new Thread(cobrar);
                         threadPOS.Start();
                     }
-                    //esto estaba comentado
+                    //esto estaba comentado esta linea del scanner
                     else if (devOpos.getScanner() != null)
                     {
                         devOpos.getScanner().DeviceEnabled = true;
