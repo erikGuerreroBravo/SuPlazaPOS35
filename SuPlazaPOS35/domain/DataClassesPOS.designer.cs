@@ -99,9 +99,15 @@ namespace SuPlazaPOS35.domain
     partial void Insertventa_devolucion(venta_devolucion instance);
     partial void Updateventa_devolucion(venta_devolucion instance);
     partial void Deleteventa_devolucion(venta_devolucion instance);
-    #endregion
-		
-		public DataClassesPOSDataContext(string connection) : 
+        #endregion
+
+        public DataClassesPOSDataContext() :
+               base(Settings.Default.pos_cajaConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
+
+        public DataClassesPOSDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
