@@ -25,6 +25,7 @@ using NLog;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace SuPlazaPOS35.view
 {
@@ -514,22 +515,15 @@ namespace SuPlazaPOS35.view
                     SuPlazaPOS35.domain.venta_devolucion venta_devolucion = sale.setDevolution();
                     devOpos.printTicketDevolutionOnPosPrinter(venta_devolucion.id_devolucion);
                     newSale();
-                    using (CancellationTokenSource cts = new CancellationTokenSource())
+                    Task work = Task.Run(() =>
                     {
-                        CancellationToken token = cts.Token;
-                        Task work = Task.Run(() =>
-                        {
-                            if (token.IsCancellationRequested) 
-                            {
-                                IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                                rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
-                                IVentaDevolucionBusiness ventaDBusiness = new VentaDevolucionBusiness();
-                                ventaDBusiness.UpdateUploadField(venta_devolucion.id_devolucion);
-                            }
-                        });
-
-                        work.Wait();
-                    };
+                        IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                        rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
+                        IVentaDevolucionBusiness ventaDBusiness = new VentaDevolucionBusiness();
+                        ventaDBusiness.UpdateUploadField(venta_devolucion.id_devolucion);
+                       
+                    });
+                    work.Wait();
                 }
             }
             catch (Exception ex)
@@ -583,22 +577,18 @@ namespace SuPlazaPOS35.view
 
                 devOpos.printTicketSaleOnPosPrinter(entidad);
 
-                using (CancellationTokenSource cts = new CancellationTokenSource())
+                Task work = Task.Run(() =>
                 {
-                    CancellationToken token = cts.Token;
-                    Task work= Task.Run(() =>
-                    {
-                        if (token.IsCancellationRequested)
-                        {
-                            IVentaBusiness IventaBusiness = new VentaBusiness();
-                            VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
-                            IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                            rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
-                            IventaBusiness.UpdateUploadField(venta.id_venta);
-                        }
-                    });
-                    work.Wait();
-                };
+                    IVentaBusiness IventaBusiness = new VentaBusiness();
+                    VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
+                    IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                    rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
+                    IventaBusiness.UpdateUploadField(venta.id_venta);
+                    
+                });
+                work.Wait();
+
+                
             }
             catch (Exception ex)
             {
@@ -851,23 +841,16 @@ namespace SuPlazaPOS35.view
                     ///modifcamos este apartado para  acoplarlo a rabbitMQ
                     Guid idVentaCancelada = sale.saleCancelOrSuspend(POS.SaleRecovery ? "suspecancel" : "cancelada");
                     #region Envio de Venta Cancelada Rabbit
-                    using (CancellationTokenSource cts = new CancellationTokenSource())
+                    Task work = Task.Run(() =>
                     {
-                        CancellationToken token = cts.Token;
-                        Task work = Task.Run(() =>
-                        {
-                            if (token.IsCancellationRequested)
-                            {
-                                IVentaCanceladaBusiness ventaCancelada = new VentaCanceladaBusiness();
-                                VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
-                                IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                                rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
-                                ventaCancelada.UpdateUploadField(idVentaCancelada);
-                            }
-                        });
-
-                        work.Wait();
-                    };
+                        IVentaCanceladaBusiness ventaCancelada = new VentaCanceladaBusiness();
+                        VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
+                        IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                        rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
+                        ventaCancelada.UpdateUploadField(idVentaCancelada);
+                        
+                    });
+                    work.Wait();
                     #endregion
                     newSale();
                 }
