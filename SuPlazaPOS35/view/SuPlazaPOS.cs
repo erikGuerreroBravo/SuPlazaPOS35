@@ -2257,12 +2257,6 @@ namespace SuPlazaPOS35.view
 
         private readonly IVentaBusiness IventaBusiness;
         private readonly VentaBusiness ventaBusiness;
-
-        //private readonly IRabbitEventBus IRabbitEvent;
-        //private readonly RabbitEventBus rabbitEventBus;
-
-        //private readonly VentaQueue ventaQueue;
-
         #endregion
 
 
@@ -2280,7 +2274,6 @@ namespace SuPlazaPOS35.view
                 ventaDevolucion.NoArticulo = a.NoArticulo;
                 ventaDevolucion.CodBarras = a.CodBarras;
                 ventaDevolucion.Cantidad = a.Cantidad;
-                
                 Articulos.Add(ventaDevolucion);
             }
 
@@ -2296,7 +2289,7 @@ namespace SuPlazaPOS35.view
                 CantidadDevuelta = venta_Devolucion.cant_dev,
                 Impuestos = venta_Devolucion.impuestos,
                 Descuento = venta_Devolucion.descuento,
-                Upload = true,
+                 Upload = true,
                 Articulos = Articulos
             };
             return ventaDM;
