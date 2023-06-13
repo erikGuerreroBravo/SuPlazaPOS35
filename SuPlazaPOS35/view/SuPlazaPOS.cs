@@ -1078,7 +1078,7 @@ namespace SuPlazaPOS35.view
                 {
                     throw new Exception("No hay ventas registradas para realizar el corte solicitado");
                 }
-                devOpos.imprimirCorte(DevicesOPOS.PrintTicket.corte_z, corte);
+                devOpos.imprimirCorte(DevicesOPOS.PrintTicket.corte_z, corteZ);  //corte
                 GC.Collect();
                 devOpos.openNowCashDrawer();
                 new CorteDAO().setLastCut(now);

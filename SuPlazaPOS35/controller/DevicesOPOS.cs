@@ -338,11 +338,8 @@ namespace SuPlazaPOS35.controller
 
             decimal efectivo = cut.efectivo;
             decimal vales = cut.pago_vales;
-            //decimal vales = cut.vales;
-
             decimal cheques = cut.cheques;
             decimal tc = cut.pago_tc;
-            //decimal tc = cut.tc;
             decimal spei = cut.pago_spei;
             decimal td = cut.pago_td;
             decimal total_vendido = cut.total_vendido;
@@ -352,7 +349,6 @@ namespace SuPlazaPOS35.controller
             decimal total_iva = cut.iva;
             decimal total_desglosado_ieps = cut.total_desglosado_ieps;
             decimal total_ieps = cut.ieps;
-
             decimal num2 = cut.iva;
             decimal ieps = cut.ieps;
             decimal total_exentos = cut.total_exentos;
@@ -430,6 +426,8 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escNormalText, Align.toLeft));
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
+          
+            
             List<venta_devolucion> listSaleOutDevolution = new VentaDevolucionDAO().getListSaleOutDevolution(cut.fecha_ini, cut.fecha_fin);
             if (listSaleOutDevolution != null)
             {
