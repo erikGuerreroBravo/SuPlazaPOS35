@@ -390,7 +390,7 @@ namespace SuPlazaPOS35.controller
             string textIeps = "IEPS:";
             string textImpuestoIeps = "Impuesto IEPS%:";
 
-            string exento = "Exento%:";
+            string exento = "IVA 0%:";
 
             string efectivoFormat = DsiCodeUtil.CurrencyFormat(efectivo);
             string valesFormat = DsiCodeUtil.CurrencyFormat(vales);
