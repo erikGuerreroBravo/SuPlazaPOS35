@@ -289,6 +289,29 @@ namespace SuPlazaPOS35.controller
         }
 
         #region Metodo para Calcular Descuentos
+        //public void calculate()
+        //{
+        //    List<SuPlazaPOS35.domain.venta_articulo> itemsSales = getItemsSales();
+        //    articulosVendidos = 0;
+        //    subTotal = 0.0m;
+        //    descuento = 0.0m;
+        //    iva = 0.0m;
+        //    ieps = 0.0m;
+        //    total = 0.0m;
+        //    foreach (SuPlazaPOS35.domain.venta_articulo item in itemsSales)
+        //    {
+        //        articulosVendidos += ((item.unidad_medida.CompareTo("Kg") == 0) ? ((item.cantidad > 0m) ? 1 : (-1)) : ((item.unidad_medida.CompareTo("Gms") == 0) ? ((item.cantidad > 0m) ? 1 : (-1)) : ((int)item.cantidad)));
+        //        subTotal += item.subTotal();
+        //        descuento += item.descuento();
+        //        iva += item.getIVA();
+        //        ieps += item.getIeps();
+        //        total += item.total();
+        //    }
+        //    subTotal = Math.Round(subTotal, 2);
+        //    impuestos = Math.Round(iva + ieps, 2);
+        //    descuento = Math.Round(descuento, 2);
+        //    total = Math.Round(total, 2);
+        //}
         public void calculate()
         {
             List<SuPlazaPOS35.domain.venta_articulo> itemsSales = getItemsSales();
@@ -301,18 +324,48 @@ namespace SuPlazaPOS35.controller
             foreach (SuPlazaPOS35.domain.venta_articulo item in itemsSales)
             {
                 articulosVendidos += ((item.unidad_medida.CompareTo("Kg") == 0) ? ((item.cantidad > 0m) ? 1 : (-1)) : ((item.unidad_medida.CompareTo("Gms") == 0) ? ((item.cantidad > 0m) ? 1 : (-1)) : ((int)item.cantidad)));
-                subTotal += item.subTotal();
-                descuento += item.descuento();
-                iva += item.getIVA();
-                ieps += item.getIeps();
-                total += item.total();
+                decimal itemSub = item.subTotal();
+                decimal itemIeps = item.getIeps();
+                decimal itemIva = item.getIVA();
+                decimal itemTotal = item.total();
+                decimal itemDescuento = item.descuento();
+
+                subTotal += item.hasIva() && item.hasIeps() ? DsiCodeUtil.Sum(itemSub, itemIeps) : itemSub;
+                descuento += itemDescuento;
+                iva += itemIva;
+                ieps += item.hasIva() && item.hasIeps() ? 0 : itemIeps;
+                total += itemTotal;
             }
             subTotal = Math.Round(subTotal, 2);
             impuestos = Math.Round(iva + ieps, 2);
             descuento = Math.Round(descuento, 2);
             total = Math.Round(total, 2);
         }
+
         #endregion
+
+        //public void calculateDevolution()
+        //{
+        //    articulosVendidos = 0;
+        //    subTotal = 0.0m;
+        //    descuento = 0.0m;
+        //    iva = 0.0m;
+        //    ieps = 0.0m;
+        //    total = 0.0m;
+        //    foreach (SuPlazaPOS35.domain.venta_articulo item in sale.venta_articulo)
+        //    {
+        //        articulosVendidos += ((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cantidad_a_devolver > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cantidad_a_devolver > 0m) ? 1 : 0) : ((int)item.cantidad_a_devolver)));
+        //        subTotal += item.subTotalDevolucion();
+        //        descuento += item.descuentoDevolucion();
+        //        iva += item.getIVADevolucion();
+        //        ieps += item.getIepsDevolucion();
+        //        total += item.totalDevolucion();
+        //    }
+        //    subTotal = Math.Round(subTotal, 2);
+        //    impuestos = Math.Round(iva + ieps, 2);
+        //    descuento = Math.Round(descuento, 2);
+        //    total = Math.Round(total, 2);
+        //}
 
         public void calculateDevolution()
         {
@@ -325,11 +378,17 @@ namespace SuPlazaPOS35.controller
             foreach (SuPlazaPOS35.domain.venta_articulo item in sale.venta_articulo)
             {
                 articulosVendidos += ((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cantidad_a_devolver > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cantidad_a_devolver > 0m) ? 1 : 0) : ((int)item.cantidad_a_devolver)));
-                subTotal += item.subTotalDevolucion();
-                descuento += item.descuentoDevolucion();
-                iva += item.getIVADevolucion();
-                ieps += item.getIepsDevolucion();
-                total += item.totalDevolucion();
+                decimal itemSub = item.subTotalDevolucion();
+                decimal itemIeps = item.getIepsDevolucion();
+                decimal itemIva = item.getIVADevolucion();
+                decimal itemTotal = item.totalDevolucion();
+                decimal itemDescuento = item.descuentoDevolucion();
+
+                subTotal += item.hasIva() && item.hasIeps() ? DsiCodeUtil.Sum(itemSub, itemIeps) : itemSub;
+                descuento += itemDescuento;
+                iva += itemIva;
+                ieps += item.hasIva() && item.hasIeps() ? 0 : itemIeps;
+                total += itemTotal;
             }
             subTotal = Math.Round(subTotal, 2);
             impuestos = Math.Round(iva + ieps, 2);

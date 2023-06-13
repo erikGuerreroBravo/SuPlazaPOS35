@@ -107,8 +107,8 @@ namespace SuPlazaPOS35.domain
         decimal getValueIva() => articulo.impuestos[0].iva / 100;
         decimal getValueIeps() => articulo.impuestos[0].ieps / 100;
 
-        bool hasIva() => articulo.impuestos[0].iva > 0;
-        bool hasIeps() => articulo.impuestos[0].ieps > 0;
+        public bool hasIva() => articulo.impuestos[0].iva > 0;
+        public bool hasIeps() => articulo.impuestos[0].ieps > 0;
 
         public object Clone()
         {
