@@ -289,29 +289,6 @@ namespace SuPlazaPOS35.controller
         }
 
         #region Metodo para Calcular Descuentos
-        //public void calculate()
-        //{
-        //    List<SuPlazaPOS35.domain.venta_articulo> itemsSales = getItemsSales();
-        //    articulosVendidos = 0;
-        //    subTotal = 0.0m;
-        //    descuento = 0.0m;
-        //    iva = 0.0m;
-        //    ieps = 0.0m;
-        //    total = 0.0m;
-        //    foreach (SuPlazaPOS35.domain.venta_articulo item in itemsSales)
-        //    {
-        //        articulosVendidos += ((item.unidad_medida.CompareTo("Kg") == 0) ? ((item.cantidad > 0m) ? 1 : (-1)) : ((item.unidad_medida.CompareTo("Gms") == 0) ? ((item.cantidad > 0m) ? 1 : (-1)) : ((int)item.cantidad)));
-        //        subTotal += item.subTotal();
-        //        descuento += item.descuento();
-        //        iva += item.getIVA();
-        //        ieps += item.getIeps();
-        //        total += item.total();
-        //    }
-        //    subTotal = Math.Round(subTotal, 2);
-        //    impuestos = Math.Round(iva + ieps, 2);
-        //    descuento = Math.Round(descuento, 2);
-        //    total = Math.Round(total, 2);
-        //}
         public void calculate()
         {
             List<SuPlazaPOS35.domain.venta_articulo> itemsSales = getItemsSales();
@@ -343,30 +320,6 @@ namespace SuPlazaPOS35.controller
         }
 
         #endregion
-
-        //public void calculateDevolution()
-        //{
-        //    articulosVendidos = 0;
-        //    subTotal = 0.0m;
-        //    descuento = 0.0m;
-        //    iva = 0.0m;
-        //    ieps = 0.0m;
-        //    total = 0.0m;
-        //    foreach (SuPlazaPOS35.domain.venta_articulo item in sale.venta_articulo)
-        //    {
-        //        articulosVendidos += ((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cantidad_a_devolver > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cantidad_a_devolver > 0m) ? 1 : 0) : ((int)item.cantidad_a_devolver)));
-        //        subTotal += item.subTotalDevolucion();
-        //        descuento += item.descuentoDevolucion();
-        //        iva += item.getIVADevolucion();
-        //        ieps += item.getIepsDevolucion();
-        //        total += item.totalDevolucion();
-        //    }
-        //    subTotal = Math.Round(subTotal, 2);
-        //    impuestos = Math.Round(iva + ieps, 2);
-        //    descuento = Math.Round(descuento, 2);
-        //    total = Math.Round(total, 2);
-        //}
-
         public void calculateDevolution()
         {
             articulosVendidos = 0;

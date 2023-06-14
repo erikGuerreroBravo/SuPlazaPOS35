@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 using DsiCodeTech.Business;
 using DsiCodeTech.Business.Interface;
 using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 using DsiCodeTech.Repository.Infraestructure;
-using SuPlazaPOS35.domain;
 using SuPlazaPOS35.model;
 
 using DsiCodeTech.Common.Util;
@@ -109,8 +105,6 @@ namespace SuPlazaPOS35.controller
             decimal total_vales = ventas.Where(vales => vales.pago_vales > 0m).Aggregate(0m, (total, vales) => total + vales.pago_vales);
             decimal total_vendido = ventas.Aggregate(0m, (total, vendido) => total + vendido.total_vendido);
             decimal total_efectivo = total_vendido - (total_spei + total_td + total_tc + total_vales);
-
-            CuadrarTotales(ref total_exento, total_vendido, total_venta);
 
             long min_folio = ventas.Min(folio => folio.folio);
             long max_folio = ventas.Max(folio => folio.folio);
