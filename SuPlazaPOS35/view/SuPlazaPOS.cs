@@ -489,11 +489,11 @@ namespace SuPlazaPOS35.view
                 if (!panelCambio.Visible && sale.saleStarted() && statusModeOperation.CompareTo(modeOperation.Sale) == 0 && sale.articulosVendidos > 0 && !devOpos.isOpenCashDrawer())
                 {
                     string venta = DsiCodeUtil.CurrencyFormat(POS.totalVenta);
-                    string cambio = DsiCodeUtil.CurrencyFormat(POS.getCambio(decimal.Parse(lblTotal.Text.Replace("$", ""))));
-
+                    
                     DevicesOPOS.showMessageDisplay("Total a pagar:", venta);
                     if (new FunctionsPOS(FunctionsPOS.Options.Cobrar).ShowDialog() == DialogResult.OK)
                     {
+                        string cambio = DsiCodeUtil.CurrencyFormat(POS.getCambio(decimal.Parse(lblTotal.Text.Replace("$", ""))));
                         panelCambio.Visible = int.Parse(lblNoArticulosVendidos.Text) != 0;
                         label1.Text = "Su cambio:";
                         lblCambio.Text = cambio;

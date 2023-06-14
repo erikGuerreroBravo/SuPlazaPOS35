@@ -422,7 +422,7 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(setDotLine());
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escHigherText, Align.toLeft));
-            stringBuilder.Append("   Total:  " + ventaFormat); 
+            stringBuilder.Append("   Total:  " + DsiCodeUtil.CurrencyFormat(total_vendido)); 
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escNormalText, Align.toLeft));
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
@@ -474,10 +474,19 @@ namespace SuPlazaPOS35.controller
             foreach (domain.venta_articulo item in items)
             {
                 items_qty += (decimal)((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cant_vta() > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cant_vta() > 0m) ? 1 : 0) : ((int)item.cant_vta())));
-                subTotal += item.subTotal();
-                descuento += item.descuento();
-                total += item.total();
-                iva += item.getIVA();
+
+                decimal itemSub = item.subTotal();
+                decimal itemIeps = item.getIeps();
+                decimal itemIva = item.getIVA();
+                decimal itemTotal = item.total();
+                decimal itemDescuento = item.descuento();
+
+                subTotal += item.hasIva() && item.hasIeps() ? DsiCodeUtil.Sum(itemSub, itemIeps) : itemSub;
+                descuento += itemDescuento;
+                iva += itemIva;
+                ieps += item.hasIva() && item.hasIeps() ? 0 : itemIeps;
+                total += itemTotal;
+
                 stringBuilder.Append(setLineItem(item));
             }
             return stringBuilder.ToString();
@@ -491,10 +500,17 @@ namespace SuPlazaPOS35.controller
             foreach (domain.venta_articulo item in items)
             {
                 items_qty += (decimal)((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cantidad > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cantidad > 0m) ? 1 : 0) : ((int)item.cant_devuelta)));
-                subTotal += item.subTotalDevolucion();
-                descuento += item.descuentoDevolucion();
-                total += item.totalDevolucion();
-                iva += item.getIVADevolucion();
+                decimal itemSub = item.subTotalDevolucion();
+                decimal itemIeps = item.getIepsDevolucion();
+                decimal itemIva = item.getIVADevolucion();
+                decimal itemTotal = item.totalDevolucion();
+                decimal itemDescuento = item.descuentoDevolucion();
+
+                subTotal += item.hasIva() && item.hasIeps() ? DsiCodeUtil.Sum(itemSub, itemIeps) : itemSub;
+                descuento += itemDescuento;
+                iva += itemIva;
+                ieps += item.hasIva() && item.hasIeps() ? 0 : itemIeps;
+                total += itemTotal;
                 stringBuilder.Append(setLineItem(item));
             }
             return stringBuilder.ToString();
