@@ -393,7 +393,8 @@ namespace SuPlazaPOS35.controller
             string debitoFormat = DsiCodeUtil.CurrencyFormat(td);
             string creditoFormat = DsiCodeUtil.CurrencyFormat(tc);
             string speiFormat = DsiCodeUtil.CurrencyFormat(spei);
-            string ventaFormat = DsiCodeUtil.CurrencyFormat(total_vendido + total_devuelto);
+            string ventaFormat = DsiCodeUtil.CurrencyFormat(total_vendido);
+            string ventaTotalFormat = DsiCodeUtil.CurrencyFormat(total_vendido - total_devuelto);
 
             stringBuilder.Append(text + new string(' ', 29 - efectivoFormat.Length) + efectivoFormat + "\r\n");
             stringBuilder.Append(text2 + new string(' ', 29 - valesFormat.Length) + valesFormat + "\r\n");
@@ -402,13 +403,13 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(txt_pago_spei + new string(' ', 29 - speiFormat.Length) + speiFormat + "\r\n");
             stringBuilder.Append(text5 + new string(' ', 24 - no_transacciones.ToString().Length) + no_transacciones + "\r\n");
             stringBuilder.Append(setDotLine());
-            stringBuilder.Append(text6 + new string(' ', 29 - total_vendido.ToString().Length) + ventaFormat + "\r\n");
+            stringBuilder.Append(text6 + new string(' ', 26 - total_vendido.ToString().Length) + ventaFormat + "\r\n");
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
 
 
-            stringBuilder.Append(text7 + new string(' ', 30 - efectivoFormat.Length) + DsiCodeUtil.CurrencyFormat(total_desglosado_iva) + "\r\n");
-            stringBuilder.Append(text8 + new string(' ', 25 - efectivoFormat.Length) + DsiCodeUtil.CurrencyFormat(total_iva) + "\r\n");
+            stringBuilder.Append(text7 + new string(' ', 33 - efectivoFormat.Length) + DsiCodeUtil.CurrencyFormat(total_desglosado_iva) + "\r\n");
+            stringBuilder.Append(text8 + new string(' ', 28 - efectivoFormat.Length) + DsiCodeUtil.CurrencyFormat(total_iva) + "\r\n");
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
 
             //TODO - quitar comentarios para que aparezca el IEPS
@@ -416,13 +417,12 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(textImpuestoIeps + new string(' ', 23 - efectivoFormat.Length) + DsiCodeUtil.CurrencyFormat(total_ieps) + "\r\n");
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));*/
 
-            stringBuilder.Append(exento + new string(' ', 30 - efectivoFormat.Length) + DsiCodeUtil.CurrencyFormat(total_exentos) + "\r\n");
-
+            stringBuilder.Append(exento + new string(' ', 33 - efectivoFormat.Length) + "$" + DsiCodeUtil.Round2Positions(total_exentos) + "\r\n");
 
             stringBuilder.Append(setDotLine());
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escHigherText, Align.toLeft));
-            stringBuilder.Append("   Total:  " + DsiCodeUtil.CurrencyFormat(total_vendido)); 
+            stringBuilder.Append("   Total:  " + ventaTotalFormat); 
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escNormalText, Align.toLeft));
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
@@ -437,7 +437,7 @@ namespace SuPlazaPOS35.controller
                 {
                     stringBuilder.Append(new string(' ', 5 - item.folio.ToString().Length) + item.folio + " | ");
                     stringBuilder.Append(string.Concat(item.fecha_dev, " | "));
-                    stringBuilder.Append(new string(' ', 9 - item.cant_dev.ToString().Length) + "-" + DsiCodeUtil.CurrencyFormat(item.cant_dev) + "\r\n");
+                    stringBuilder.Append(new string(' ', 9 - item.cant_dev.ToString().Length) + "-" + DsiCodeUtil.Currency2Format(item.cant_dev) + "\r\n");
                 }
             }
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));

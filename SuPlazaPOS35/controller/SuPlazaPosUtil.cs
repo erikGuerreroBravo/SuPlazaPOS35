@@ -44,9 +44,10 @@ namespace SuPlazaPOS35.controller
         {
             DateTime start = this._posSettingsBusiness.GetPosSettings().last_corte_z;
 
-            List<DsiCodeTech.Repository.PosCaja.venta> ventas = this._ventaBusiness.GetVentasByDates(start, end);
+            //DateTime inicio = new DateTime(2023, 05, 07, 17, 07, 01);
+            //DateTime fin = new DateTime(2023, 06, 14, 17, 30, 35);
 
-            decimal total_venta = 0m;
+            List<DsiCodeTech.Repository.PosCaja.venta> ventas = this._ventaBusiness.GetVentasByDates(start, end);
 
             //Acomulador cuando un producto tiene Iva
             decimal total_desglosado_iva = 0m;
@@ -86,17 +87,14 @@ namespace SuPlazaPOS35.controller
                 decimal subtotalFinal = DsiCodeUtil.Round6Positions(unitarioTotal * cantidad_real);
 
                 decimal totalIeps = containsIeps ? DsiCodeUtil.Round6Positions(subtotalFinal * productoIeps) : 0;
-                decimal totalIva = containsIva ? (subtotalFinal + totalIeps) * productoIva : 0;
+                decimal totalIva = containsIva ? DsiCodeUtil.Round6Positions(DsiCodeUtil.Sum(subtotalFinal, totalIeps) * productoIva) : 0;
 
                 /* Calculamos los subtotales */
-                total_exento += !containsIva && !containsIeps ? subtotalFinal : 0;
                 total_desglosado_ieps += containsIeps && !containsIva ? subtotalFinal : 0;
-                total_desglosado_iva += containsIva ? subtotalFinal + totalIeps : 0;
+                total_desglosado_iva += containsIva ? DsiCodeUtil.Round6Positions(DsiCodeUtil.Sum(subtotalFinal, totalIeps)) : 0;
 
                 total_ieps += containsIeps && !containsIva ? totalIeps : 0;
                 total_iva += containsIva ? totalIva : 0;
-
-                total_venta += DsiCodeUtil.Sum(subtotalFinal, totalIeps, totalIva);
             }
 
             decimal total_spei = ventas.Where(spei => spei.pago_spei > 0m).Aggregate(0m, (total, spei) => total + spei.pago_spei);
@@ -104,13 +102,11 @@ namespace SuPlazaPOS35.controller
             decimal total_tc = ventas.Where(credito => credito.pago_tc > 0m).Aggregate(0m, (total, credito) => total + credito.pago_tc);
             decimal total_vales = ventas.Where(vales => vales.pago_vales > 0m).Aggregate(0m, (total, vales) => total + vales.pago_vales);
             decimal total_vendido = ventas.Aggregate(0m, (total, vendido) => total + vendido.total_vendido);
-            decimal total_efectivo = total_vendido - (total_spei + total_td + total_tc + total_vales);
+            decimal total_efectivo = total_vendido - DsiCodeUtil.Sum(total_spei, total_td, total_tc, total_vales);
 
             long min_folio = ventas.Min(folio => folio.folio);
             long max_folio = ventas.Max(folio => folio.folio);
-
             int num_transacciones = ventas.Count;
-
             int pos = ventas.First().id_pos;
 
             List<DsiCodeTech.Repository.PosCaja.venta_devolucion> devoluciones = this._ventaDevolucionBusiness.GetDevolucionesByDates(start, end);
@@ -120,6 +116,17 @@ namespace SuPlazaPOS35.controller
             {
                 total_devolucion = devoluciones.Sum(d => d.cant_dev);
             }
+
+            decimal impuestos = DsiCodeUtil.Sum(total_desglosado_ieps, total_desglosado_iva, total_ieps, total_iva);
+            decimal venta_total = total_vendido - total_devolucion;
+            total_exento = venta_total - impuestos;
+
+            decimal impuestoRound = DsiCodeUtil.Sum(
+                Math.Round(total_desglosado_ieps, 2),
+                Math.Round(total_desglosado_iva, 2),
+                Math.Round(total_ieps, 2),
+                Math.Round(total_iva, 2));
+            total_exento = DsiCodeUtil.Sum(Math.Round(total_exento, 2), impuestoRound) <= venta_total ? Math.Round(total_exento, 2) : total_exento;
 
             return new corte
             {
@@ -134,12 +141,12 @@ namespace SuPlazaPOS35.controller
                 pago_vales = total_vales,
                 pago_tc = total_tc,
                 pago_efectivo = total_efectivo,
-                total_vendido = total_venta,
+                total_exentos = total_exento,
+                total_vendido = total_vendido,
                 total_desglosado_iva = total_desglosado_iva,
                 total_desglosado_ieps = total_desglosado_ieps,
-                total_exentos = total_exento,
                 total_devuelto = total_devolucion,
-                iva = total_iva, 
+                iva = total_iva,
                 ieps = total_ieps,
                 no_transacciones = num_transacciones
             };
