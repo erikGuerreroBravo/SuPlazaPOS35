@@ -129,6 +129,16 @@ namespace DsiCodeTech.Common.Util
             return Math.Truncate(value * 100) / 100;
         }
 
+        public static decimal Round3Positions(decimal value)
+        {
+            return Math.Truncate(value * 1000) / 1000;
+        }
+
+        public static decimal Round4Positions(decimal value)
+        {
+            return Math.Truncate(value * 10000) / 10000;
+        }
+
         public static decimal Round6Positions(decimal value)
         {
             return Math.Round(value, 6);
@@ -137,6 +147,11 @@ namespace DsiCodeTech.Common.Util
         public static string CurrencyFormat(decimal value) 
         {
             return string.Format(CultureInfo.InvariantCulture, "${0:#.##}", value > 0m ? value : "0.00");
+        }
+
+        public static string Currency2Format(decimal value)
+        {
+            return string.Format(CultureInfo.InvariantCulture, "${0}", value > 0m ? Round3Positions(value) : "0.00");
         }
     }
 }
