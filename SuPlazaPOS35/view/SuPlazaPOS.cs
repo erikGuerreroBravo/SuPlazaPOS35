@@ -517,11 +517,18 @@ namespace SuPlazaPOS35.view
                     newSale();
                     Task work = Task.Run(() =>
                     {
-                        IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                        rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
-                        IVentaDevolucionBusiness ventaDBusiness = new VentaDevolucionBusiness();
-                        ventaDBusiness.UpdateUploadField(venta_devolucion.id_devolucion);
-                       
+                        try
+                        {
+                            IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                            rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
+                            IVentaDevolucionBusiness ventaDBusiness = new VentaDevolucionBusiness();
+                            ventaDBusiness.UpdateUploadField(venta_devolucion.id_devolucion);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Fue imposible realizar conexión a traves de RabbitMQ, la devolucion se realizo en la caja: ", ex.Message);
+                            
+                        }                       
                     });
                     work.Wait();
                 }
@@ -579,12 +586,20 @@ namespace SuPlazaPOS35.view
 
                 Task work = Task.Run(() =>
                 {
-                    IVentaBusiness IventaBusiness = new VentaBusiness();
-                    VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
-                    IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                    rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
-                    IventaBusiness.UpdateUploadField(venta.id_venta);
-                    
+                    try
+                    {
+                        IVentaBusiness IventaBusiness = new VentaBusiness();
+                        VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
+                        IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                        rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
+                        IventaBusiness.UpdateUploadField(venta.id_venta);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Fue imposible realizar conexión a traves de RabbitMQ, el cobro se realizo en la caja: ", ex.Message);
+
+                    }
+                               
                 });
                 work.Wait();
 
@@ -843,12 +858,20 @@ namespace SuPlazaPOS35.view
                     #region Envio de Venta Cancelada Rabbit
                     Task work = Task.Run(() =>
                     {
-                        IVentaCanceladaBusiness ventaCancelada = new VentaCanceladaBusiness();
-                        VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
-                        IRabbitEventBus rabbitEvent = new RabbitEventBus();
-                        rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
-                        ventaCancelada.UpdateUploadField(idVentaCancelada);
-                        
+                        try
+                        {
+                            IVentaCanceladaBusiness ventaCancelada = new VentaCanceladaBusiness();
+                            VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
+                            IRabbitEventBus rabbitEvent = new RabbitEventBus();
+                            rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
+                            ventaCancelada.UpdateUploadField(idVentaCancelada);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Fue imposible realizar conexión a traves de RabbotMQ, se realizo la cancelacion en la caja: ", ex.Message);
+
+                        }
+                                     
                     });
                     work.Wait();
                     #endregion
