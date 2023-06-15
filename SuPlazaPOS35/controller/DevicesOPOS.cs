@@ -311,6 +311,7 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(setLineAlignLn("Código                P.Unit      Importe", Align.toLeft));
             stringBuilder.Append(setDotLine());
             items_qty = (subTotal = (iva = (descuento = (total = 0.0m))));
+
             List<domain.venta_articulo> saleOutDevolutionDetail = new VentaDevolucionDAO().getSaleOutDevolutionDetail(id_devolucion);
             stringBuilder.Append(setTicketDevolutionDetail(saleOutDevolutionDetail));
 
@@ -499,7 +500,7 @@ namespace SuPlazaPOS35.controller
             StringBuilder stringBuilder = new StringBuilder("");
             foreach (domain.venta_articulo item in items)
             {
-                items_qty += (decimal)((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cantidad > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cantidad > 0m) ? 1 : 0) : ((int)item.cant_devuelta)));
+                items_qty += (decimal)((item.articulo.unidad_medida.descripcion.CompareTo("Kg") == 0) ? ((item.cantidad > 0m) ? 1 : 0) : ((item.articulo.unidad_medida.descripcion.CompareTo("Gms") == 0) ? ((item.cantidad > 0m) ? 1 : 0) : ((int)item.cantidad_a_devolver)));
                 decimal itemSub = item.subTotalDevolucion();
                 decimal itemIeps = item.getIepsDevolucion();
                 decimal itemIva = item.getIVADevolucion();
@@ -591,7 +592,7 @@ namespace SuPlazaPOS35.controller
 
         {
             StringBuilder stringBuilder = new StringBuilder("");
-            decimal num = ((SuPlazaPOS.statusModeOperation.CompareTo(SuPlazaPOS.modeOperation.Devolution) == 0) ? va.cant_devuelta : va.cant_vta());
+            decimal num = ((SuPlazaPOS.statusModeOperation.CompareTo(SuPlazaPOS.modeOperation.Devolution) == 0) ? va.cantidad_a_devolver : va.cant_vta());
             string numFormat = DsiCodeUtil.CurrencyFormat(num);
             string precio_ventaFormat = DsiCodeUtil.CurrencyFormat(va.articulo.precio_venta);
 
