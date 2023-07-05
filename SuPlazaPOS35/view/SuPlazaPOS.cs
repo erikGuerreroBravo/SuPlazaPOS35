@@ -1179,6 +1179,8 @@ namespace SuPlazaPOS35.view
             sale.subTotal = 0.0m;
             sale.descuento = 0.0m;
             sale.iva = 0.0m;
+            sale.impuestos = 0.0m;
+            sale.ieps = 0.0m;
             sale.total = 0.0m;
         }
         #endregion

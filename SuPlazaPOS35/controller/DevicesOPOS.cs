@@ -257,7 +257,7 @@ namespace SuPlazaPOS35.controller
             checkPosPrinter();
             StringBuilder stringBuilder = new StringBuilder("");
             stringBuilder.Append(escLogo + "\r\n");
-            if(printer.CapRecBold)
+            if (printer.CapRecBold)
             {
                 stringBuilder.Append(escBoldOn);
             }
@@ -355,7 +355,7 @@ namespace SuPlazaPOS35.controller
             decimal total_exentos = cut.total_exentos;
 
             StringBuilder stringBuilder = new StringBuilder("");
-            if(printer.CapRecBold)
+            if (printer.CapRecBold)
             {
                 stringBuilder.Append(escBoldOn);
             }
@@ -423,12 +423,12 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(setDotLine());
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escHigherText, Align.toLeft));
-            stringBuilder.Append("   Total:  " + ventaTotalFormat); 
+            stringBuilder.Append("   Total:  " + ventaTotalFormat);
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
             stringBuilder.Append(setLineAlignLn(escNormalText, Align.toLeft));
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
-          
-            
+
+
             List<venta_devolucion> listSaleOutDevolution = new VentaDevolucionDAO().getListSaleOutDevolution(cut.fecha_ini, cut.fecha_fin);
             if (listSaleOutDevolution != null)
             {
@@ -490,6 +490,11 @@ namespace SuPlazaPOS35.controller
 
                 stringBuilder.Append(setLineItem(item));
             }
+            impuestos = Math.Round(DsiCodeUtil.Sum(iva, ieps), 2);
+            descuento = Math.Round(descuento, 2);
+            total = Math.Round(total, 2);
+            subTotal = DsiCodeUtil.Sum(impuestos, subTotal) <= total ? Math.Round(subTotal, 2) : DsiCodeUtil.Round2Positions(subTotal);
+
             return stringBuilder.ToString();
         }
         #endregion
@@ -514,6 +519,11 @@ namespace SuPlazaPOS35.controller
                 total += itemTotal;
                 stringBuilder.Append(setLineItem(item));
             }
+            impuestos = Math.Round(DsiCodeUtil.Sum(iva, ieps), 2);
+            descuento = Math.Round(descuento, 2);
+            total = Math.Round(total, 2);
+            subTotal = DsiCodeUtil.Sum(impuestos, subTotal) <= total ? Math.Round(subTotal, 2) : DsiCodeUtil.Round2Positions(subTotal);
+
             return stringBuilder.ToString();
         }
         #endregion
@@ -659,7 +669,7 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(string.Concat(" ", new string(' ', 12 - qty_items.ToString("F0").Length) + qty_items.ToString("F0")));
             stringBuilder.Append("\r\n");
             string pago_efectivoFormat = DsiCodeUtil.CurrencyFormat(vta.pago_efectivo);
-            
+
             if (vta.pago_efectivo > 0m)
             {
                 stringBuilder.Append(new string(' ', 28 - text2.Length) + text2);
@@ -859,8 +869,6 @@ namespace SuPlazaPOS35.controller
         {
             return getDevicesInfoList("Scanner").Cast<string>().ToArray();
         }
-
-
 
         private static List<string> getDevicesInfoList(string deviceType)
         {

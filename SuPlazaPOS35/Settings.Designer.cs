@@ -36,7 +36,7 @@ namespace SuPlazaPOS35 {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-E7L4U2B\\SQLEXPRESS;Initial Catalog=pos_caja;Persist Security " +
-            "Info=True;User ID=sa;Password=Plaza15\r\n")]
+            "Info=True;User ID=sa;Password=Admin123\r\n")]
         public string pos_cajaConnectionString {
             get {
                 return ((string)(this["pos_cajaConnectionString"]));
