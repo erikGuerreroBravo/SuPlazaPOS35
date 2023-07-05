@@ -6,7 +6,7 @@
       <Value Profile="(Default)">Data Source=localhost;Initial Catalog=pos_admin;Persist Security Info=True;User ID=sa;Password=Plaza15</Value>
     </Setting>
     <Setting Name="pos_cajaConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=DESKTOP-E7L4U2B\SQLEXPRESS;Initial Catalog=pos_caja;Persist Security Info=True;User ID=sa;Password=Admin123
+      <Value Profile="(Default)">Data Source=DESKTOP-E7L4U2B\SQLEXPRESS;Initial Catalog=pos_caja;Persist Security Info=True;User ID=sa;Password=Plaza15
 </Value>
     </Setting>
   </Settings>

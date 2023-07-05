@@ -603,10 +603,13 @@ namespace SuPlazaPOS35.controller
         {
             StringBuilder stringBuilder = new StringBuilder("");
             decimal num = ((SuPlazaPOS.statusModeOperation.CompareTo(SuPlazaPOS.modeOperation.Devolution) == 0) ? va.cantidad_a_devolver : va.cant_vta());
-            string numFormat = DsiCodeUtil.CurrencyFormat(num);
+            //string numFormat = DsiCodeUtil.CurrencyFormat(num);
+            
+
             string precio_ventaFormat = DsiCodeUtil.CurrencyFormat(va.articulo.precio_venta);
 
-            stringBuilder.Append(new string(' ', 8 - numFormat.Length) + numFormat);
+            //stringBuilder.Append(new string(' ', 8 - numFormat.Length) + numFormat);
+            stringBuilder.Append(new string(' ', 8 - num.ToString().Length) + num);
 
             //stringBuilder.Append(new string(' ', 8 - num.ToString("F3").Length) + num.ToString("F3"));
             stringBuilder.Append(string.Concat(" ", va.articulo.unidad_medida.descripcion + new string(' ', 4 - va.articulo.unidad_medida.descripcion.Length)));
@@ -616,7 +619,9 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(new string(' ', 13 - precio_ventaFormat.Length) + precio_ventaFormat);
             //stringBuilder.Append(new string(' ', 13 - va.articulo.precio_venta.ToString("F2").Length) + va.articulo.precio_venta.ToString("F2"));
             decimal num2 = ((SuPlazaPOS.statusModeOperation.CompareTo(SuPlazaPOS.modeOperation.Devolution) == 0) ? va.totalDevolucion() : va.precio_vta * va.cant_vta());
+            
             string num2Format = DsiCodeUtil.CurrencyFormat(num2);
+            
             stringBuilder.Append(new string(' ', 13 - num2Format.Length) + num2Format);
             stringBuilder.Append("\r\n");
             return stringBuilder.ToString();

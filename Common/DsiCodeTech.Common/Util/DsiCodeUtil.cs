@@ -146,6 +146,7 @@ namespace DsiCodeTech.Common.Util
 
         public static string CurrencyFormat(decimal value) 
         {
+            
             return string.Format(CultureInfo.InvariantCulture, "${0:#.##}", value > 0m ? value : "0.00");
         }
 
