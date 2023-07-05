@@ -295,6 +295,7 @@ namespace SuPlazaPOS35.controller
             articulosVendidos = 0;
             subTotal = 0.0m;
             descuento = 0.0m;
+            impuestos = 0.0m;
             iva = 0.0m;
             ieps = 0.0m;
             total = 0.0m;
@@ -313,10 +314,10 @@ namespace SuPlazaPOS35.controller
                 ieps += item.hasIva() && item.hasIeps() ? 0 : itemIeps;
                 total += itemTotal;
             }
-            subTotal = Math.Round(subTotal, 2);
-            impuestos = Math.Round(iva + ieps, 2);
+            impuestos = Math.Round(DsiCodeUtil.Sum(iva, ieps), 2);
             descuento = Math.Round(descuento, 2);
             total = Math.Round(total, 2);
+            subTotal = DsiCodeUtil.Sum(impuestos, subTotal) <= total ? Math.Round(subTotal, 2) : DsiCodeUtil.Round2Positions(subTotal);
         }
 
         #endregion
@@ -325,6 +326,7 @@ namespace SuPlazaPOS35.controller
             articulosVendidos = 0;
             subTotal = 0.0m;
             descuento = 0.0m;
+            impuestos = 0.0m;
             iva = 0.0m;
             ieps = 0.0m;
             total = 0.0m;
@@ -343,10 +345,10 @@ namespace SuPlazaPOS35.controller
                 ieps += item.hasIva() && item.hasIeps() ? 0 : itemIeps;
                 total += itemTotal;
             }
-            subTotal = Math.Round(subTotal, 2);
-            impuestos = Math.Round(iva + ieps, 2);
+            impuestos = Math.Round(DsiCodeUtil.Sum(iva, ieps), 2);
             descuento = Math.Round(descuento, 2);
             total = Math.Round(total, 2);
+            subTotal = DsiCodeUtil.Sum(impuestos, subTotal) <= total ? Math.Round(subTotal, 2) : DsiCodeUtil.Round2Positions(subTotal);
         }
 
         public SuPlazaPOS35.domain.venta_articulo setPrice(int index, decimal newPrice)
