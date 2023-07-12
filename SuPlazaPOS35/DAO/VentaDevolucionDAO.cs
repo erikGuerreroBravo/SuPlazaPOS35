@@ -87,7 +87,7 @@ namespace SuPlazaPOS35.DAO
         }
         public List<venta_devolucion> getListSaleOutDevolution(DateTime fecha_ini, DateTime fecha_fin)
         {
-            string sql = string.Format("SELECT id_devolucion,folio,id_pos,id_venta,fecha_dev,cant_dev,vendedor,supervisor FROM venta_devolucion WHERE fecha_dev BETWEEN '{0}' AND '{1}' ORDER BY folio", fecha_ini.ToString("yyyy-MM-dd HH:mm:ss"), fecha_fin.ToString("yyyy/MM/dd HH:mm:ss")); //dd/MM/yyyy
+            string sql = string.Format("SELECT id_devolucion,folio,id_pos,id_venta,fecha_dev,cant_dev,vendedor,supervisor FROM venta_devolucion WHERE fecha_dev BETWEEN '{0}' AND '{1}' ORDER BY folio", fecha_ini.ToString("yyyy-MM-dd HH:mm:ss"), fecha_fin.ToString("yyyy-MM-dd HH:mm:ss")); //yyyy/MM/dd HH:mm:ss
             SqlDataReader dataReader = GetDataReader(sql);
             List<venta_devolucion> list = new List<venta_devolucion>();
             while (dataReader.Read())

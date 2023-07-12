@@ -521,6 +521,7 @@ namespace SuPlazaPOS35.view
                         {
                             IRabbitEventBus rabbitEvent = new RabbitEventBus();
                             rabbitEvent.Producer(new VentaDevolucionQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = this.GetVentaDevolucion(venta_devolucion) });
+                            rabbitEvent.Close();
                             IVentaDevolucionBusiness ventaDBusiness = new VentaDevolucionBusiness();
                             ventaDBusiness.UpdateUploadField(venta_devolucion.id_devolucion);
                         }
@@ -592,6 +593,7 @@ namespace SuPlazaPOS35.view
                         VentaDM ventaDM = IventaBusiness.GetVentaByFolio(venta.folio);
                         IRabbitEventBus rabbitEvent = new RabbitEventBus();
                         rabbitEvent.Producer(new VentaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaDM });
+                        rabbitEvent.Close();
                         IventaBusiness.UpdateUploadField(venta.id_venta);
                     }
                     catch (Exception ex)
@@ -864,6 +866,7 @@ namespace SuPlazaPOS35.view
                             VentaCanceladaDM ventaCanceladaDM = ventaCancelada.GetCancelSaleByIdCancelSale(idVentaCancelada);
                             IRabbitEventBus rabbitEvent = new RabbitEventBus();
                             rabbitEvent.Producer(new VentaCanceladaQueue() { CorrelationId = Guid.NewGuid().ToString(), Body = ventaCanceladaDM });
+                            rabbitEvent.Close();
                             ventaCancelada.UpdateUploadField(idVentaCancelada);
                         }
                         catch (Exception ex)

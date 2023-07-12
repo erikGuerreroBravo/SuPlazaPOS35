@@ -216,7 +216,8 @@ namespace DsiCodetech.RabbitMQ.Implement
         /// </summary>
         public void Close()
         {
-
+            _connection.Close();
+            GC.Collect();
         }
     }
 }

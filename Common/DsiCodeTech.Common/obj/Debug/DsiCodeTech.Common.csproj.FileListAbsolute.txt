@@ -1,0 +1,14 @@
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\DsiCodeTech.Common.dll.config
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\DsiCodeTech.Common.dll
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\DsiCodeTech.Common.pdb
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\EntityFramework.dll
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\EntityFramework.xml
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\bin\Debug\Newtonsoft.Json.xml
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\obj\Debug\DsiCodeTech.Common.csproj.AssemblyReference.cache
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\obj\Debug\DsiCodeTech.Common.csproj.CoreCompileInputs.cache
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\obj\Debug\DsiCodeTech.Common.csproj.CopyComplete
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\obj\Debug\DsiCodeTech.Common.dll
+C:\Users\TGCS\source\repos\SuPlazaPOS35\Common\DsiCodeTech.Common\obj\Debug\DsiCodeTech.Common.pdb

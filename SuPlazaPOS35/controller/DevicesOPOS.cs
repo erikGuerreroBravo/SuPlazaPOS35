@@ -11,6 +11,9 @@ using SuPlazaPOS35.view;
 using NLog;
 using DsiCodeTech.Common.Util;
 using System.Security;
+using DsiCodeTech.Business.Interface;
+using DsiCodeTech.Repository.Infraestructure;
+using DsiCodeTech.Business;
 
 namespace SuPlazaPOS35.controller
 {
@@ -85,9 +88,14 @@ namespace SuPlazaPOS35.controller
 
         private string escLogo = $"{'\u001b'}|1B";
 
+        private readonly IVentaBusiness _ventaBusiness;
+        private readonly IVentaDevolucionBusiness _ventaDevolucionBusiness;
 
         public DevicesOPOS()
         {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            this._ventaBusiness = new VentaBusiness(unitOfWork);
+            this._ventaDevolucionBusiness = new VentaDevolucionBusiness(unitOfWork);
             pe = new PosExplorer();
             openDevicesOpos();
         }
@@ -429,12 +437,14 @@ namespace SuPlazaPOS35.controller
             stringBuilder.Append(setLineAlignLn("", Align.toLeft));
 
 
-            List<venta_devolucion> listSaleOutDevolution = new VentaDevolucionDAO().getListSaleOutDevolution(cut.fecha_ini, cut.fecha_fin);
+            //List<venta_devolucion> listSaleOutDevolution = new VentaDevolucionDAO().getListSaleOutDevolution(cut.fecha_ini, cut.fecha_fin);
+            List<DsiCodeTech.Repository.PosCaja.venta_devolucion> listSaleOutDevolution = 
+                this._ventaDevolucionBusiness.GetDevolucionesByDates(cut.fecha_ini, cut.fecha_fin);
             if (listSaleOutDevolution != null)
             {
                 stringBuilder.Append(setDotLine());
                 stringBuilder.Append(setSubTitle(PrintTicket.devoluciones));
-                foreach (venta_devolucion item in listSaleOutDevolution)
+                foreach (DsiCodeTech.Repository.PosCaja.venta_devolucion item in listSaleOutDevolution)
                 {
                     stringBuilder.Append(new string(' ', 5 - item.folio.ToString().Length) + item.folio + " | ");
                     stringBuilder.Append(string.Concat(item.fecha_dev, " | "));

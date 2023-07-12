@@ -1,1 +1,0 @@
-# DsiCodetech.RabbitMQ
