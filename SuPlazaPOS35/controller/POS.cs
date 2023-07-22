@@ -578,7 +578,7 @@ namespace SuPlazaPOS35.controller
                     venta_cancelada.venta_cancelada_articulo.Add(venta_cancelada_articulo);
                 }
             }
-            new SuspencionDAO().c(venta_cancelada);
+            new SuspencionDAO().setSaleSuspended(venta_cancelada);
             SaleRecovery = false;
             venta_cancelada = null;
             itemsSales.Clear();
