@@ -848,7 +848,7 @@ namespace SuPlazaPOS35.view
         }
         #endregion
 
-        #region Cancelar Venta
+         #region Cancelar Venta
         private void btnCancelarVta_Click(object sender, EventArgs e)
         {
             try

@@ -20,8 +20,8 @@ namespace SuPlazaPOS35.domain
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
+	using DsiCodeTech.Common.Util;
+
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="pos_caja")]
 	public partial class DataClassesPOSDataContext : System.Data.Linq.DataContext
 	{
@@ -102,7 +102,7 @@ namespace SuPlazaPOS35.domain
         #endregion
 
         public DataClassesPOSDataContext() :
-               base(Settings.Default.pos_cajaConnectionString, mappingSource)
+               base(new SqlInjectConnectionToLinq().WithNameDatabase("pos_caja").Build() , mappingSource)
         {
             OnCreated();
         }

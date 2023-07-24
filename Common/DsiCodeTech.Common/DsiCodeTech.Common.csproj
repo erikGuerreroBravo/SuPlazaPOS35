@@ -116,6 +116,7 @@
     <Compile Include="Security\AesCrypto.cs" />
     <Compile Include="Util\DsiCodeUtil.cs" />
     <Compile Include="Util\SqlInjectConnection.cs" />
+    <Compile Include="Util\SqlInjectConnectionToLinq.cs" />
     <Compile Include="Web\DataTransfer\HttpResponseOnError.cs" />
     <Compile Include="Web\DataTransfer\RequestWrapper.cs" />
     <Compile Include="Web\DataTransfer\ResponseWrapper.cs" />

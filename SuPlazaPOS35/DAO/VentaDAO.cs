@@ -150,41 +150,6 @@ namespace SuPlazaPOS35.DAO
         //}
         #endregion
 
-
-
-        public void loadSaleOut(long folio)
-        {
-            string sql = $"SELECT id_pos,id_venta,vendedor,folio,fecha_venta,total_vendido,pago_efectivo,pago_vales,pago_tc,pago_td,supervisor FROM venta WHERE folio={folio}";
-            SqlDataReader dataReader = GetDataReader(sql);
-            if (dataReader.Read())
-            {
-                SuPlazaPOS35.model.venta venta = new SuPlazaPOS35.model.venta();
-                venta.id_pos = int.Parse(dataReader["id_pos"].ToString());
-                venta.id_venta = new Guid(dataReader["id_venta"].ToString());
-                venta.vendedor = dataReader["vendedor"].ToString();
-                venta.folio = long.Parse(dataReader["folio"].ToString());
-                venta.fecha_venta = DateTime.Parse(dataReader["fecha_venta"].ToString());
-                venta.total_vendido = decimal.Parse(dataReader["total_vendido"].ToString());
-                venta.pago_efectivo = decimal.Parse(dataReader["pago_efectivo"].ToString());
-                venta.pago_vales = decimal.Parse(dataReader["pago_vales"].ToString());
-                venta.pago_tc = decimal.Parse(dataReader["pago_tc"].ToString());
-                venta.pago_td = decimal.Parse(dataReader["pago_td"].ToString());
-                venta.supervisor = dataReader["supervisor"].ToString();
-                SuPlazaPOS35.model.venta venta2 = venta;
-                string cmdText = string.Format("INSERT INTO venta(id_pos,id_venta,vendedor,folio,fecha_venta,total_vendido,pago_efectivo,pago_td,pago_vales,pago_tc,supervisor) VALUES({0},'{1}','{2}',{3},'{4}',{5},{6},{7},{8},{9},{10})", venta2.id_pos, venta2.id_venta, venta2.vendedor, venta2.folio, venta2.fecha_venta.ToString("dd/MM/yyyy HH:mm:ss"), venta2.total_vendido, venta2.pago_efectivo, venta2.pago_td, venta2.pago_vales, venta2.pago_tc, (venta2.supervisor.Length > 0) ? $"'{venta2.supervisor}'" : "NULL");
-                new SqlCommand(cmdText, POSCaja.getConnectionRemote()).ExecuteNonQuery();
-                List<SuPlazaPOS35.model.venta_articulo> saleOutList = new VentaArticuloDAO().getSaleOutList(venta2.id_venta);
-                foreach (SuPlazaPOS35.model.venta_articulo item in saleOutList)
-                {
-                    cmdText = string.Format("INSERT INTO venta_articulo(id_pos,id_venta,no_articulo,cod_barras,cantidad,articulo_ofertado,precio_regular,cambio_precio,iva,precio_vta,porcent_desc,cant_dev,[user_name],id_devolucion) VALUES({0},'{1}',{2},'{3}',{4},{5},{6},{7},{8},{9},{10},{11},{12},{13})", item.id_pos, item.id_venta, item.no_articulo, item.cod_barras, item.cantidad, item.articulo_ofertado ? "1" : "0", item.precio_regular, item.cambio_precio ? "1" : "0", item.iva, item.precio_vta, item.porcent_desc, item.cant_devuelta, (item.user_name.Length > 0) ? $"'{item.user_name}'" : "NULL", (item.id_devolucion.Length > 0) ? $"'{item.id_devolucion}'" : "NULL");
-                    new SqlCommand(cmdText, POSCaja.getConnectionRemote()).ExecuteNonQuery();
-                }
-                POSCaja.closeRemoteConnection();
-                return;
-            }
-            throw new Exception("La Venta no existe");
-        }
-
         #region GetTotales
         /// <summary>
         /// Este metodo se encarga de consultar el total de la venta para impresion del resultado en un ticket
