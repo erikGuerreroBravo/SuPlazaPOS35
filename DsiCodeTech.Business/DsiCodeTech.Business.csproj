@@ -51,6 +51,7 @@
     <Compile Include="Interface\IOfertaBusiness.cs" />
     <Compile Include="Interface\IPosSettingsBusiness.cs" />
     <Compile Include="Interface\IVentaBusiness.cs" />
+    <Compile Include="Interface\IVentaCanceladaArticuloBusiness.cs" />
     <Compile Include="Interface\IVentaCanceladaBusiness.cs" />
     <Compile Include="Interface\IVentaDevolucionArticuloBusiness.cs" />
     <Compile Include="Interface\IVentaDevolucionBusiness.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="PosSettingsBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VentaBusiness.cs" />
+    <Compile Include="VentaCanceladaArticuloBusiness.cs" />
     <Compile Include="VentaCanceladaBusiness.cs" />
     <Compile Include="VentaDevolucionArticuloBusiness.cs" />
     <Compile Include="VentaDevolucionBusiness.cs" />

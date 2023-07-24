@@ -1,4 +1,5 @@
 ﻿using DsiCodeTech.Common.DataAccess.Domain;
+using DsiCodeTech.Repository.PosCaja;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,21 @@ namespace DsiCodeTech.Business.Interface
 {
     public interface IVentaCanceladaBusiness
     {
+        /// <summary>
+        /// Inserta una cancelación junto con sus artículos
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        venta_cancelada Insert (venta_cancelada entity);
+
+        /// <summary>
+        /// Actualiza una cancelación junto con sus artículos 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        venta_cancelada Update (venta_cancelada entity);
+
+
         VentaCanceladaDM GetCancelSaleByIdCancelSale(Guid idVentaCancelada);
         /// <summary>
         /// Este metodo se encarga de actualizar el campo upload de la entidad venta_cancelada 

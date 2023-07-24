@@ -1,5 +1,4 @@
 ﻿using SuPlazaPOS35.domain;
-using SuPlazaPOS35.DomainServer;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;

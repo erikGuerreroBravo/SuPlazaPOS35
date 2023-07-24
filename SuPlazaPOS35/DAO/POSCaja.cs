@@ -2,13 +2,13 @@
 using System.Data.SqlClient;
 using SuPlazaPOS35.Properties;
 
+using DsiCodeTech.Common.Util;
+
 namespace SuPlazaPOS35.DAO
 {
     public class POSCaja
     {
 		private static SqlConnection connectionLocal;
-
-		private static SqlConnection connectionRemote;
 
 		private static SqlDataReader dr;
 
@@ -16,29 +16,10 @@ namespace SuPlazaPOS35.DAO
 		{
 			if (connectionLocal == null)
 			{
-				connectionLocal = new SqlConnection(Settings.Default.pos_cajaConnectionString + ";MultipleActiveResultSets=true;");
+				connectionLocal = new SqlConnection(new SqlInjectConnectionToLinq().WithNameDatabase(Settings.Default.dbName).Build());
 				connectionLocal.Open();
 			}
 			return connectionLocal;
-		}
-
-		public static SqlConnection getConnectionRemote()
-		{
-			if (connectionRemote == null)
-			{
-				connectionRemote = new SqlConnection(Settings.Default.pos_adminConnectionString + ";MultipleActiveResultSets=true;");
-				connectionRemote.Open();
-			}
-			return connectionRemote;
-		}
-
-		public static void closeRemoteConnection()
-		{
-			if (connectionRemote != null)
-			{
-				connectionRemote.Close();
-				connectionRemote.Dispose();
-			}
 		}
 
 		public SqlDataReader GetDataReader(string sql)

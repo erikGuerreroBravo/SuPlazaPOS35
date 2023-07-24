@@ -44,9 +44,6 @@ namespace SuPlazaPOS35.controller
         {
             DateTime start = this._posSettingsBusiness.GetPosSettings().last_corte_z;
 
-            //DateTime inicio = new DateTime(2023, 05, 07, 17, 07, 01);
-            //DateTime fin = new DateTime(2023, 06, 14, 17, 30, 35);
-
             List<DsiCodeTech.Repository.PosCaja.venta> ventas = this._ventaBusiness.GetVentasByDates(start, end);
 
             //Acomulador cuando un producto tiene Iva

@@ -50,7 +50,7 @@ namespace SuPlazaPOS35.view
             }
             catch (Exception ex)
             {
-                logger.Error($"Ocurrio un error en el sistema: { ex } ");
+                logger.Error(ex, "Problemas de acceso a datos, no se pudo finalizar el proceso.");
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
