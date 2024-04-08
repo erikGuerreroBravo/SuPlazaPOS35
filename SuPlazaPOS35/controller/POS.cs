@@ -10,6 +10,8 @@ using DsiCodetech.RabbitMQ.EventQueue;
 using DsiCodetech.RabbitMQ.Implement;
 using System.Security.Cryptography;
 using DsiCodeTech.Common.DataAccess.Domain;
+using DsiCodeTech.Business.Interface;
+using DsiCodeTech.Business;
 
 namespace SuPlazaPOS35.controller
 {
@@ -214,14 +216,36 @@ namespace SuPlazaPOS35.controller
             return saleItems.Count() > 0;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de validar al usuario y el password con el que accede al sistema
+        /// </summary>
+        /// <param name="userName">el nombre de usuario</param>
+        /// <param name="password">el password del usuario</param>
+        /// <returns>un valor bool</returns>
         public bool validateUser(string userName, string password)
         {
+            #region Codigo Anterior
+            /*
             using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
             if (dataClassesPOSDataContext.usuario.FirstOrDefault() != null)
             {
                 user = dataClassesPOSDataContext.usuario.FirstOrDefault(u => u.user_name.Equals(userName) && u.password.Equals(password) && u.usuario_permiso.FirstOrDefault(up => up.id_permiso.Equals("pos_caja")) != null);
                 return user != null;
+            }*/
+            #endregion
+            #region New Code
+            IUsuarioBusiness IUsuarioBusiness = new UsuarioBusiness();
+            if (userName != null && password != null)
+            {
+                if (IUsuarioBusiness.ValidateAnyUser())
+                {
+                    if (IUsuarioBusiness.ValidateLogin(userName, password) != null)
+                    {
+                        return true;
+                    }
+                }
             }
+            #endregion
             return userName.Equals("admin") && password.Equals("admin");
         }
 

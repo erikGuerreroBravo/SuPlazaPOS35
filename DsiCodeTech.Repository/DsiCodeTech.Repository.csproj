@@ -142,6 +142,7 @@
     </Compile>
     <Compile Include="PosSettingsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsarioRepository.cs" />
     <Compile Include="VentaArticuloRepository.cs" />
     <Compile Include="VentaCanceladaRepository.cs" />
     <Compile Include="VentaDevolucionArticuloRepository.cs" />

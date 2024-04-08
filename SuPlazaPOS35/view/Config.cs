@@ -364,22 +364,20 @@ namespace SuPlazaPOS35.view
             this.tabPOS.Controls.Add(this.tabPage4);
             this.tabPOS.Controls.Add(this.tabSync);
             this.tabPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPOS.Location = new System.Drawing.Point(18, 18);
-            this.tabPOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPOS.Location = new System.Drawing.Point(12, 12);
             this.tabPOS.Name = "tabPOS";
             this.tabPOS.SelectedIndex = 0;
-            this.tabPOS.Size = new System.Drawing.Size(738, 377);
+            this.tabPOS.Size = new System.Drawing.Size(492, 249);
             this.tabPOS.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage1.Size = new System.Drawing.Size(730, 344);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(484, 212);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Datos de caja";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -400,27 +398,24 @@ namespace SuPlazaPOS35.view
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(722, 334);
+            this.panel1.Size = new System.Drawing.Size(478, 206);
             this.panel1.TabIndex = 0;
             // 
             // txtFolio
             // 
-            this.txtFolio.Location = new System.Drawing.Point(364, 265);
-            this.txtFolio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFolio.Location = new System.Drawing.Point(243, 172);
             this.txtFolio.Name = "txtFolio";
-            this.txtFolio.Size = new System.Drawing.Size(151, 30);
+            this.txtFolio.Size = new System.Drawing.Size(102, 34);
             this.txtFolio.TabIndex = 16;
             this.txtFolio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(84, 269);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(56, 175);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(272, 26);
+            this.label16.Size = new System.Drawing.Size(181, 17);
             this.label16.TabIndex = 6;
             this.label16.Text = "Folio inicial de Ticket:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -428,8 +423,7 @@ namespace SuPlazaPOS35.view
             // ckbLogoTicket
             // 
             this.ckbLogoTicket.AutoSize = true;
-            this.ckbLogoTicket.Location = new System.Drawing.Point(364, 128);
-            this.ckbLogoTicket.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbLogoTicket.Location = new System.Drawing.Point(243, 83);
             this.ckbLogoTicket.Name = "ckbLogoTicket";
             this.ckbLogoTicket.Size = new System.Drawing.Size(22, 21);
             this.ckbLogoTicket.TabIndex = 13;
@@ -437,10 +431,9 @@ namespace SuPlazaPOS35.view
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(128, 126);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(85, 82);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(228, 26);
+            this.label15.Size = new System.Drawing.Size(152, 17);
             this.label15.TabIndex = 5;
             this.label15.Text = "Logo en ticket:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -448,8 +441,7 @@ namespace SuPlazaPOS35.view
             // ckbInventarioOnline
             // 
             this.ckbInventarioOnline.AutoSize = true;
-            this.ckbInventarioOnline.Location = new System.Drawing.Point(364, 223);
-            this.ckbInventarioOnline.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbInventarioOnline.Location = new System.Drawing.Point(243, 145);
             this.ckbInventarioOnline.Name = "ckbInventarioOnline";
             this.ckbInventarioOnline.Size = new System.Drawing.Size(22, 21);
             this.ckbInventarioOnline.TabIndex = 15;
@@ -458,8 +450,7 @@ namespace SuPlazaPOS35.view
             // ckbTicketConcentrado
             // 
             this.ckbTicketConcentrado.AutoSize = true;
-            this.ckbTicketConcentrado.Location = new System.Drawing.Point(364, 175);
-            this.ckbTicketConcentrado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbTicketConcentrado.Location = new System.Drawing.Point(243, 114);
             this.ckbTicketConcentrado.Name = "ckbTicketConcentrado";
             this.ckbTicketConcentrado.Size = new System.Drawing.Size(22, 21);
             this.ckbTicketConcentrado.TabIndex = 14;
@@ -473,57 +464,51 @@ namespace SuPlazaPOS35.view
             "Tarjeta de crédito",
             "Vales",
             "Cheque"});
-            this.cboTipoPago.Location = new System.Drawing.Point(364, 72);
-            this.cboTipoPago.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboTipoPago.Location = new System.Drawing.Point(243, 47);
             this.cboTipoPago.Name = "cboTipoPago";
-            this.cboTipoPago.Size = new System.Drawing.Size(283, 33);
+            this.cboTipoPago.Size = new System.Drawing.Size(190, 37);
             this.cboTipoPago.TabIndex = 12;
             // 
             // txtIdPos
             // 
-            this.txtIdPos.Location = new System.Drawing.Point(364, 26);
-            this.txtIdPos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtIdPos.Location = new System.Drawing.Point(243, 17);
             this.txtIdPos.Name = "txtIdPos";
-            this.txtIdPos.Size = new System.Drawing.Size(79, 30);
+            this.txtIdPos.Size = new System.Drawing.Size(54, 34);
             this.txtIdPos.TabIndex = 11;
             this.txtIdPos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(134, 222);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(89, 144);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(222, 26);
+            this.label4.Size = new System.Drawing.Size(148, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Inventario en línea:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(128, 174);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(85, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(228, 26);
+            this.label3.Size = new System.Drawing.Size(152, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Ticket concentrado:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(60, 78);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(40, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(296, 26);
+            this.label2.Size = new System.Drawing.Size(197, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Pago por defecto:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(123, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(82, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 26);
+            this.label1.Size = new System.Drawing.Size(155, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número de caja:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -531,11 +516,10 @@ namespace SuPlazaPOS35.view
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2.Size = new System.Drawing.Size(730, 344);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(484, 208);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dispositivos OPOS";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -557,19 +541,17 @@ namespace SuPlazaPOS35.view
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(4, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(722, 334);
+            this.panel2.Size = new System.Drawing.Size(478, 202);
             this.panel2.TabIndex = 0;
             // 
             // ckbScanner
             // 
             this.ckbScanner.AutoSize = true;
-            this.ckbScanner.Location = new System.Drawing.Point(580, 275);
-            this.ckbScanner.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbScanner.Location = new System.Drawing.Point(387, 179);
             this.ckbScanner.Name = "ckbScanner";
-            this.ckbScanner.Size = new System.Drawing.Size(105, 29);
+            this.ckbScanner.Size = new System.Drawing.Size(117, 33);
             this.ckbScanner.TabIndex = 28;
             this.ckbScanner.Text = "Activar";
             this.ckbScanner.UseVisualStyleBackColor = true;
@@ -577,10 +559,9 @@ namespace SuPlazaPOS35.view
             // ckbEnableCashDramer
             // 
             this.ckbEnableCashDramer.AutoSize = true;
-            this.ckbEnableCashDramer.Location = new System.Drawing.Point(580, 202);
-            this.ckbEnableCashDramer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbEnableCashDramer.Location = new System.Drawing.Point(387, 131);
             this.ckbEnableCashDramer.Name = "ckbEnableCashDramer";
-            this.ckbEnableCashDramer.Size = new System.Drawing.Size(105, 29);
+            this.ckbEnableCashDramer.Size = new System.Drawing.Size(117, 33);
             this.ckbEnableCashDramer.TabIndex = 26;
             this.ckbEnableCashDramer.Text = "Activar";
             this.ckbEnableCashDramer.UseVisualStyleBackColor = true;
@@ -588,10 +569,9 @@ namespace SuPlazaPOS35.view
             // ckbEnablePrinter
             // 
             this.ckbEnablePrinter.AutoSize = true;
-            this.ckbEnablePrinter.Location = new System.Drawing.Point(580, 125);
-            this.ckbEnablePrinter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbEnablePrinter.Location = new System.Drawing.Point(387, 81);
             this.ckbEnablePrinter.Name = "ckbEnablePrinter";
-            this.ckbEnablePrinter.Size = new System.Drawing.Size(105, 29);
+            this.ckbEnablePrinter.Size = new System.Drawing.Size(117, 33);
             this.ckbEnablePrinter.TabIndex = 24;
             this.ckbEnablePrinter.Text = "Activar";
             this.ckbEnablePrinter.UseVisualStyleBackColor = true;
@@ -599,10 +579,9 @@ namespace SuPlazaPOS35.view
             // ckbEnableDisplay
             // 
             this.ckbEnableDisplay.AutoSize = true;
-            this.ckbEnableDisplay.Location = new System.Drawing.Point(582, 54);
-            this.ckbEnableDisplay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbEnableDisplay.Location = new System.Drawing.Point(388, 35);
             this.ckbEnableDisplay.Name = "ckbEnableDisplay";
-            this.ckbEnableDisplay.Size = new System.Drawing.Size(105, 29);
+            this.ckbEnableDisplay.Size = new System.Drawing.Size(117, 33);
             this.ckbEnableDisplay.TabIndex = 22;
             this.ckbEnableDisplay.Text = "Activar";
             this.ckbEnableDisplay.UseVisualStyleBackColor = true;
@@ -610,28 +589,25 @@ namespace SuPlazaPOS35.view
             // cboScannersOPOS
             // 
             this.cboScannersOPOS.FormattingEnabled = true;
-            this.cboScannersOPOS.Location = new System.Drawing.Point(20, 275);
-            this.cboScannersOPOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboScannersOPOS.Location = new System.Drawing.Point(13, 179);
             this.cboScannersOPOS.Name = "cboScannersOPOS";
-            this.cboScannersOPOS.Size = new System.Drawing.Size(552, 33);
+            this.cboScannersOPOS.Size = new System.Drawing.Size(369, 37);
             this.cboScannersOPOS.TabIndex = 27;
             // 
             // cboCashDrawersOPOS
             // 
             this.cboCashDrawersOPOS.FormattingEnabled = true;
-            this.cboCashDrawersOPOS.Location = new System.Drawing.Point(20, 202);
-            this.cboCashDrawersOPOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboCashDrawersOPOS.Location = new System.Drawing.Point(13, 131);
             this.cboCashDrawersOPOS.Name = "cboCashDrawersOPOS";
-            this.cboCashDrawersOPOS.Size = new System.Drawing.Size(552, 33);
+            this.cboCashDrawersOPOS.Size = new System.Drawing.Size(369, 37);
             this.cboCashDrawersOPOS.TabIndex = 25;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 246);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(16, 160);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 25);
+            this.label6.Size = new System.Drawing.Size(116, 29);
             this.label6.TabIndex = 3;
             this.label6.Text = "Scanner:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -639,19 +615,17 @@ namespace SuPlazaPOS35.view
             // cboPrintersOPOS
             // 
             this.cboPrintersOPOS.FormattingEnabled = true;
-            this.cboPrintersOPOS.Location = new System.Drawing.Point(20, 125);
-            this.cboPrintersOPOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboPrintersOPOS.Location = new System.Drawing.Point(13, 81);
             this.cboPrintersOPOS.Name = "cboPrintersOPOS";
-            this.cboPrintersOPOS.Size = new System.Drawing.Size(552, 33);
+            this.cboPrintersOPOS.Size = new System.Drawing.Size(369, 37);
             this.cboPrintersOPOS.TabIndex = 23;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 172);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(16, 112);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(138, 25);
+            this.label8.Size = new System.Drawing.Size(163, 29);
             this.label8.TabIndex = 3;
             this.label8.Text = "CashDrawer:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -659,19 +633,17 @@ namespace SuPlazaPOS35.view
             // cboDisplaysOPOS
             // 
             this.cboDisplaysOPOS.FormattingEnabled = true;
-            this.cboDisplaysOPOS.Location = new System.Drawing.Point(20, 49);
-            this.cboDisplaysOPOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboDisplaysOPOS.Location = new System.Drawing.Point(13, 32);
             this.cboDisplaysOPOS.Name = "cboDisplaysOPOS";
-            this.cboDisplaysOPOS.Size = new System.Drawing.Size(552, 33);
+            this.cboDisplaysOPOS.Size = new System.Drawing.Size(369, 37);
             this.cboDisplaysOPOS.TabIndex = 21;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 95);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(16, 62);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 25);
+            this.label7.Size = new System.Drawing.Size(98, 29);
             this.label7.TabIndex = 3;
             this.label7.Text = "Printer:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -679,10 +651,9 @@ namespace SuPlazaPOS35.view
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 20);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(16, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 25);
+            this.label5.Size = new System.Drawing.Size(106, 29);
             this.label5.TabIndex = 3;
             this.label5.Text = "Display:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -690,11 +661,10 @@ namespace SuPlazaPOS35.view
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panel3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage3.Size = new System.Drawing.Size(730, 344);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Size = new System.Drawing.Size(484, 208);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Dispositivos Windows";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -707,19 +677,17 @@ namespace SuPlazaPOS35.view
             this.panel3.Controls.Add(this.label9);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(4, 5);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(722, 334);
+            this.panel3.Size = new System.Drawing.Size(478, 202);
             this.panel3.TabIndex = 0;
             // 
             // ckbEnablePrinterWin
             // 
             this.ckbEnablePrinterWin.AutoSize = true;
-            this.ckbEnablePrinterWin.Location = new System.Drawing.Point(586, 134);
-            this.ckbEnablePrinterWin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbEnablePrinterWin.Location = new System.Drawing.Point(391, 87);
             this.ckbEnablePrinterWin.Name = "ckbEnablePrinterWin";
-            this.ckbEnablePrinterWin.Size = new System.Drawing.Size(105, 29);
+            this.ckbEnablePrinterWin.Size = new System.Drawing.Size(117, 33);
             this.ckbEnablePrinterWin.TabIndex = 32;
             this.ckbEnablePrinterWin.Text = "Activar";
             this.ckbEnablePrinterWin.UseVisualStyleBackColor = true;
@@ -727,19 +695,17 @@ namespace SuPlazaPOS35.view
             // cboPrintersWin
             // 
             this.cboPrintersWin.FormattingEnabled = true;
-            this.cboPrintersWin.Location = new System.Drawing.Point(26, 132);
-            this.cboPrintersWin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboPrintersWin.Location = new System.Drawing.Point(17, 86);
             this.cboPrintersWin.Name = "cboPrintersWin";
-            this.cboPrintersWin.Size = new System.Drawing.Size(552, 33);
+            this.cboPrintersWin.Size = new System.Drawing.Size(369, 37);
             this.cboPrintersWin.TabIndex = 31;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 103);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(20, 67);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 25);
+            this.label9.Size = new System.Drawing.Size(98, 29);
             this.label9.TabIndex = 6;
             this.label9.Text = "Printer:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -747,11 +713,10 @@ namespace SuPlazaPOS35.view
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panel4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 33);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage4.Size = new System.Drawing.Size(730, 344);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Size = new System.Drawing.Size(484, 208);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dispositivo RS232";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -772,19 +737,17 @@ namespace SuPlazaPOS35.view
             this.panel4.Controls.Add(this.label10);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(4, 5);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(722, 334);
+            this.panel4.Size = new System.Drawing.Size(478, 202);
             this.panel4.TabIndex = 0;
             // 
             // ckbEnableCOM
             // 
             this.ckbEnableCOM.AutoSize = true;
-            this.ckbEnableCOM.Location = new System.Drawing.Point(326, 258);
-            this.ckbEnableCOM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ckbEnableCOM.Location = new System.Drawing.Point(217, 168);
             this.ckbEnableCOM.Name = "ckbEnableCOM";
-            this.ckbEnableCOM.Size = new System.Drawing.Size(105, 29);
+            this.ckbEnableCOM.Size = new System.Drawing.Size(117, 33);
             this.ckbEnableCOM.TabIndex = 46;
             this.ckbEnableCOM.Text = "Activar";
             this.ckbEnableCOM.UseVisualStyleBackColor = true;
@@ -792,18 +755,16 @@ namespace SuPlazaPOS35.view
             // cboStopBits
             // 
             this.cboStopBits.FormattingEnabled = true;
-            this.cboStopBits.Location = new System.Drawing.Point(326, 212);
-            this.cboStopBits.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboStopBits.Location = new System.Drawing.Point(217, 138);
             this.cboStopBits.Name = "cboStopBits";
-            this.cboStopBits.Size = new System.Drawing.Size(168, 33);
+            this.cboStopBits.Size = new System.Drawing.Size(113, 37);
             this.cboStopBits.TabIndex = 45;
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(81, 217);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(54, 141);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(236, 26);
+            this.label14.Size = new System.Drawing.Size(157, 17);
             this.label14.TabIndex = 9;
             this.label14.Text = "Stop bits:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -811,18 +772,16 @@ namespace SuPlazaPOS35.view
             // cboParity
             // 
             this.cboParity.FormattingEnabled = true;
-            this.cboParity.Location = new System.Drawing.Point(326, 166);
-            this.cboParity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboParity.Location = new System.Drawing.Point(217, 108);
             this.cboParity.Name = "cboParity";
-            this.cboParity.Size = new System.Drawing.Size(168, 33);
+            this.cboParity.Size = new System.Drawing.Size(113, 37);
             this.cboParity.TabIndex = 44;
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(81, 171);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(54, 111);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(236, 26);
+            this.label13.Size = new System.Drawing.Size(157, 17);
             this.label13.TabIndex = 9;
             this.label13.Text = "Parity:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -833,18 +792,16 @@ namespace SuPlazaPOS35.view
             this.cboDataBits.Items.AddRange(new object[] {
             "7",
             "8"});
-            this.cboDataBits.Location = new System.Drawing.Point(326, 120);
-            this.cboDataBits.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboDataBits.Location = new System.Drawing.Point(217, 78);
             this.cboDataBits.Name = "cboDataBits";
-            this.cboDataBits.Size = new System.Drawing.Size(168, 33);
+            this.cboDataBits.Size = new System.Drawing.Size(113, 37);
             this.cboDataBits.TabIndex = 43;
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(81, 125);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(54, 81);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(236, 26);
+            this.label12.Size = new System.Drawing.Size(157, 17);
             this.label12.TabIndex = 9;
             this.label12.Text = "Data bits:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -860,18 +817,16 @@ namespace SuPlazaPOS35.view
             "57600",
             "115200",
             "230400"});
-            this.cboBaudRates.Location = new System.Drawing.Point(326, 74);
-            this.cboBaudRates.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboBaudRates.Location = new System.Drawing.Point(217, 48);
             this.cboBaudRates.Name = "cboBaudRates";
-            this.cboBaudRates.Size = new System.Drawing.Size(168, 33);
+            this.cboBaudRates.Size = new System.Drawing.Size(113, 37);
             this.cboBaudRates.TabIndex = 42;
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(81, 78);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(54, 51);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(236, 26);
+            this.label11.Size = new System.Drawing.Size(157, 17);
             this.label11.TabIndex = 9;
             this.label11.Text = "Baud Rates:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -879,18 +834,16 @@ namespace SuPlazaPOS35.view
             // cboPuertoCOM
             // 
             this.cboPuertoCOM.FormattingEnabled = true;
-            this.cboPuertoCOM.Location = new System.Drawing.Point(326, 28);
-            this.cboPuertoCOM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboPuertoCOM.Location = new System.Drawing.Point(217, 18);
             this.cboPuertoCOM.Name = "cboPuertoCOM";
-            this.cboPuertoCOM.Size = new System.Drawing.Size(168, 33);
+            this.cboPuertoCOM.Size = new System.Drawing.Size(113, 37);
             this.cboPuertoCOM.TabIndex = 41;
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(81, 32);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(54, 21);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(236, 26);
+            this.label10.Size = new System.Drawing.Size(157, 17);
             this.label10.TabIndex = 9;
             this.label10.Text = "Puerto COM:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -898,11 +851,10 @@ namespace SuPlazaPOS35.view
             // tabSync
             // 
             this.tabSync.Controls.Add(this.panel5);
-            this.tabSync.Location = new System.Drawing.Point(4, 29);
-            this.tabSync.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabSync.Location = new System.Drawing.Point(4, 33);
             this.tabSync.Name = "tabSync";
-            this.tabSync.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabSync.Size = new System.Drawing.Size(730, 344);
+            this.tabSync.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabSync.Size = new System.Drawing.Size(484, 208);
             this.tabSync.TabIndex = 4;
             this.tabSync.Text = "Sincronizador";
             this.tabSync.UseVisualStyleBackColor = true;
@@ -912,18 +864,16 @@ namespace SuPlazaPOS35.view
             this.panel5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel5.Controls.Add(this.btnSyncDownload);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(4, 5);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(722, 334);
+            this.panel5.Size = new System.Drawing.Size(478, 202);
             this.panel5.TabIndex = 0;
             // 
             // btnSyncDownload
             // 
-            this.btnSyncDownload.Location = new System.Drawing.Point(198, 145);
-            this.btnSyncDownload.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSyncDownload.Location = new System.Drawing.Point(132, 94);
             this.btnSyncDownload.Name = "btnSyncDownload";
-            this.btnSyncDownload.Size = new System.Drawing.Size(314, 35);
+            this.btnSyncDownload.Size = new System.Drawing.Size(209, 23);
             this.btnSyncDownload.TabIndex = 53;
             this.btnSyncDownload.Text = "Sincronizar Servidor -> Cliente";
             this.btnSyncDownload.UseVisualStyleBackColor = true;
@@ -934,12 +884,11 @@ namespace SuPlazaPOS35.view
             this.btnExit.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Image = (System.Drawing.Image)(new System.Drawing.Bitmap(SuPlazaPOS35.ResourcesPOS.opened37, new System.Drawing.Size(42, 42)));
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(634, 398);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(423, 259);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(111, 80);
+            this.btnExit.Size = new System.Drawing.Size(74, 52);
             this.btnExit.TabIndex = 102;
             this.btnExit.Text = "&Salir";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -950,12 +899,11 @@ namespace SuPlazaPOS35.view
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = (System.Drawing.Image)(new System.Drawing.Bitmap(SuPlazaPOS35.ResourcesPOS.floppy20, new System.Drawing.Size(42, 42)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSave.Location = new System.Drawing.Point(514, 398);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Location = new System.Drawing.Point(343, 259);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(111, 80);
+            this.btnSave.Size = new System.Drawing.Size(74, 52);
             this.btnSave.TabIndex = 101;
             this.btnSave.Text = "&Guardar";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -965,14 +913,13 @@ namespace SuPlazaPOS35.view
             // Config
             // 
             this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(774, 485);
+            this.ClientSize = new System.Drawing.Size(516, 315);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabPOS);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Config";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel de configuraciones de POS";
