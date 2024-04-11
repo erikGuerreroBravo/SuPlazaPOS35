@@ -9,6 +9,6 @@ namespace DsiCodeTech.Business.Interface
 {
     public interface IPosSettingsBusiness
     {
-        pos_settings GetPosSettings();
+        DsiCodeTech.Repository.PosCaja.pos_settings GetPosSettings();
     }
 }

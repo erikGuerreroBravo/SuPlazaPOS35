@@ -12,6 +12,8 @@ using System.Security.Cryptography;
 using DsiCodeTech.Common.DataAccess.Domain;
 using DsiCodeTech.Business.Interface;
 using DsiCodeTech.Business;
+using DsiCodeTech.Common.Constant;
+using DsiCodeTech.Common.Exception;
 
 namespace SuPlazaPOS35.controller
 {
@@ -36,7 +38,6 @@ namespace SuPlazaPOS35.controller
         public static SuPlazaPOS35.domain.venta_devolucion devolucion { get; set; }
 
         public static decimal tp_efectivo { get; set; }
-
 
         public static decimal tp_cheque { get; set; }
 
@@ -71,6 +72,11 @@ namespace SuPlazaPOS35.controller
         public bool deleteItemLast { get; set; }
 
         public bool changeItemPrice { get; set; }
+
+
+        #region Modificacion de Variables para Funcionamiento Nuevo del sistema
+        private  IPosSettingsBusiness posSettingsBusiness;
+        #endregion
 
         public POS()
         {
@@ -265,10 +271,22 @@ namespace SuPlazaPOS35.controller
             return dataClassesPOSDataContext.usuario_permiso.FirstOrDefault(up => up.usuario.password == password && up.id_permiso == permission);
         }
 
+        /// <summary>
+        /// Este metodo se encarga de verificar si existe un possettings registrado en la base de datos
+        /// </summary>
+        /// <returns>regresa una variable bool true/false</returns>
         public bool isRegisterPOS()
         {
-            caja = new SuPlazaPOS35.domain.DataClassesPOSDataContext().pos_settings.FirstOrDefault();
-            return caja != null;
+            #region Validar  las configuracion del sistema
+            IPosSettingsBusiness settingsBusiness = new PosSettingsBusiness();
+            var settings = settingsBusiness.GetPosSettings();
+            
+            return settings != null;
+            #endregion
+            #region Codigo Anterior
+            //caja = new SuPlazaPOS35.domain.DataClassesPOSDataContext().pos_settings.FirstOrDefault();
+            //return caja != null;
+            #endregion
         }
 
         public int existsSuspendedSales()
@@ -676,8 +694,21 @@ namespace SuPlazaPOS35.controller
 
         public static bool IsConcentredTicket()
         {
-            using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
-            return dataClassesPOSDataContext.pos_settings.FirstOrDefault().tck_concentrado;
+            #region Codigo Anterior
+            //using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
+            //return dataClassesPOSDataContext.pos_settings.FirstOrDefault().tck_concentrado;
+            #endregion
+            #region Codigo Nuevo
+            try
+            {
+                IPosSettingsBusiness posSettingsBusiness = new PosSettingsBusiness();
+                return  posSettingsBusiness.GetPosSettings().tck_concentrado;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
+            }
+            #endregion
         }
 
         public static bool IsLogoEnable()
