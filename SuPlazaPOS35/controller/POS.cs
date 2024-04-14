@@ -713,8 +713,22 @@ namespace SuPlazaPOS35.controller
 
         public static bool IsLogoEnable()
         {
-            using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
-            return dataClassesPOSDataContext.pos_settings.FirstOrDefault().pos_log_enable;
+            #region Codigo Nuevo
+            try
+            {
+                IPosSettingsBusiness posSettingsBusiness = new PosSettingsBusiness();
+                return posSettingsBusiness.GetPosSettings().pos_log_enable;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
+            }
+            #endregion
+
+            #region Codigo Anterior
+            //using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
+            //return dataClassesPOSDataContext.pos_settings.FirstOrDefault().pos_log_enable;
+            #endregion
         }
     }
 }

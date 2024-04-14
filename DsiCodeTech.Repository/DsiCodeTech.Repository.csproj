@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloRepository.cs" />
+    <Compile Include="EmpresaRepository.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
     <Compile Include="OfertaArticuloRepository.cs" />
     <Compile Include="OfertaRepository.cs" />

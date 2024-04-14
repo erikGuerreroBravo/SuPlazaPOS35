@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloBusiness.cs" />
+    <Compile Include="EmpresaBusiness.cs" />
     <Compile Include="Interface\IArticuloBusiness.cs" />
+    <Compile Include="Interface\IEmpresaBusiness.cs" />
     <Compile Include="Interface\IOfertaBusiness.cs" />
     <Compile Include="Interface\IPosSettingsBusiness.cs" />
     <Compile Include="Interface\IUsuarioBusiness.cs" />
