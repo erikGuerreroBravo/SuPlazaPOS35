@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.Common", "Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodetech.RabbitMQ", "DsiCodetech.RabbitMQ\DsiCodetech.RabbitMQ.csproj", "{3E64D4CB-6B20-42E4-BCC2-5B091E1D68CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.Builder.Generic", "DsiCodeTech.Builder.Generic\DsiCodeTech.Builder.Generic\DsiCodeTech.Builder.Generic.csproj", "{07CD5329-9E5C-476E-8648-73CFC6D39E0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3E64D4CB-6B20-42E4-BCC2-5B091E1D68CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E64D4CB-6B20-42E4-BCC2-5B091E1D68CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E64D4CB-6B20-42E4-BCC2-5B091E1D68CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07CD5329-9E5C-476E-8648-73CFC6D39E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CD5329-9E5C-476E-8648-73CFC6D39E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CD5329-9E5C-476E-8648-73CFC6D39E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CD5329-9E5C-476E-8648-73CFC6D39E0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

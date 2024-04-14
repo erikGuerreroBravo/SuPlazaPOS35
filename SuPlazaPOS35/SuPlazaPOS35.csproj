@@ -316,6 +316,10 @@
     <Content Include="SuPlazaPOS35_32512.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.Builder.Generic\DsiCodeTech.Builder.Generic\DsiCodeTech.Builder.Generic.csproj">
+      <Project>{07cd5329-9e5c-476e-8648-73cfc6d39e0d}</Project>
+      <Name>DsiCodeTech.Builder.Generic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DsiCodeTech.Business\DsiCodeTech.Business.csproj">
       <Project>{5B141605-59E9-4D68-8C40-D9AE46F37732}</Project>
       <Name>DsiCodeTech.Business</Name>

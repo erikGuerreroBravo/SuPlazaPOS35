@@ -164,6 +164,7 @@ namespace SuPlazaPOS35.controller
             return saleItem;
         }
 
+        #region SetItemSaleRecovery Modificado
         public void setItemSaleRecovery(venta_cancelada_articulo itemRecovery)
         {
             #region Codigo Nuevo
@@ -239,10 +240,25 @@ namespace SuPlazaPOS35.controller
             #endregion
 
         }
+        #endregion
 
         public static SuPlazaPOS35.domain.articulo findItemByCode(string code)
         {
-            return new SuPlazaPOS35.domain.DataClassesPOSDataContext().articulo.FirstOrDefault(a => a.cod_barras == code);
+
+            #region Codigo Nuevo
+            IArticuloBusiness articuloBusiness = new ArticuloBusiness();
+            DsiCodeTech.Repository.PosCaja.articulo articulo=articuloBusiness.GetArticleByBarCode(code);
+            SuPlazaPOS35.domain.articulo articuloDM = new domain.articulo();
+            articuloDM = AutoMapper.Mapper.Map(articulo, articuloDM);
+            return articuloDM;
+            #endregion
+
+            #region Codigo Anterior
+            //return new SuPlazaPOS35.domain.DataClassesPOSDataContext().articulo.FirstOrDefault(a => a.cod_barras == code);
+            #endregion
+
+
+
         }
 
         public static SuPlazaPOS35.domain.venta saleThere(int folio)

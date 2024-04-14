@@ -5,11 +5,15 @@ using System.Data.Linq.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DsiCodeTech.Builder.Generic;
+using DsiCodeTech.Business;
+using DsiCodeTech.Business.Interface;
 using DsiCodeTech.Common.Util;
 using SuPlazaPOS35;
 using SuPlazaPOS35.controller;
 using SuPlazaPOS35.DAO;
 using SuPlazaPOS35.domain;
+using SuPlazaPOS35.DomainServer;
 using SuPlazaPOS35.model;
 using SuPlazaPOS35.view;
 
@@ -315,7 +319,13 @@ namespace SuPlazaPOS35.view
         {
             try
             {
-                articulo articulo = POS.findItemByCode(codigoBarras);
+                domain.articulo articulo = new domain.articulo();
+                articulo=AutoMapper.Mapper.Map(Builder<ArticuloBusiness>.New.Create().GetArticleByBarCode(codigoBarras), articulo);
+                
+                #region Codigo Anterior
+                //articulo articulo = POS.findItemByCode(codigoBarras);
+                #endregion
+
                 if (articulo == null)
                 {
                     throw new Exception("El artículo no existe");
