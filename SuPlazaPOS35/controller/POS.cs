@@ -636,21 +636,39 @@ namespace SuPlazaPOS35.controller
 
         public static SuPlazaPOS35.model.empresa getEmpresa()
         {
-            using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
-            SuPlazaPOS35.domain.empresa empresa = dataClassesPOSDataContext.empresa.FirstOrDefault();
+
+            IEmpresaBusiness empresaBusiness = new EmpresaBusiness();
+            EmpresaDM  empresa= empresaBusiness.GetEmpresa();
             if (empresa != null)
             {
-                SuPlazaPOS35.model.empresa empresa2 = new SuPlazaPOS35.model.empresa();
-                empresa2.razon_social = empresa.razon_social;
-                empresa2.calle = empresa.calle;
-                empresa2.colonia = empresa.colonia;
-                empresa2.municipio = empresa.municipio;
-                empresa2.estado = empresa.estado;
-                empresa2.codigo_postal = empresa.codigo_postal;
-                empresa2.rfc = empresa.rfc;
-                return empresa2;
+                SuPlazaPOS35.model.empresa empresaNew = new SuPlazaPOS35.model.empresa();
+                empresaNew.razon_social = empresa.RazonSocial;
+                empresaNew.calle = empresa.Calle;
+                empresaNew.colonia = empresa.Colonia;
+                empresaNew.municipio = empresa.Municipio;
+                empresaNew.estado = empresa.Estado;
+                empresaNew.codigo_postal = empresa.CodPostal ;
+                empresaNew.rfc = empresa.Rfc;
+                return empresaNew;
             }
             return null;
+            #region Codigo Anterior
+            //using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
+            //SuPlazaPOS35.domain.empresa empresa = dataClassesPOSDataContext.empresa.FirstOrDefault();
+            //if (empresa != null)
+            //{
+            //    SuPlazaPOS35.model.empresa empresa2 = new SuPlazaPOS35.model.empresa();
+            //    empresa2.razon_social = empresa.razon_social;
+            //    empresa2.calle = empresa.calle;
+            //    empresa2.colonia = empresa.colonia;
+            //    empresa2.municipio = empresa.municipio;
+            //    empresa2.estado = empresa.estado;
+            //    empresa2.codigo_postal = empresa.codigo_postal;
+            //    empresa2.rfc = empresa.rfc;
+            //    return empresa2;
+            //}
+
+            #endregion
         }
 
         public SuPlazaPOS35.domain.venta_devolucion setDevolution()

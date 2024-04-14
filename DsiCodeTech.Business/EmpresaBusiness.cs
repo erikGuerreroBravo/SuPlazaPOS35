@@ -52,12 +52,12 @@ namespace DsiCodeTech.Business
                 empresaDM.TelPrincipal = empresa.tel_principal;
                 empresaDM.Email = empresa.e_mail;
                 empresaDM.FechaRegistro = empresa.fecha_registro;
-                
+                _repository.commitTransaction();
                 return empresaDM;
             }
             catch (Exception ex) when (ex is DataException || ex is SqlException)
             {
-
+                _repository.rollbackTransaction();
                 throw new BusinessException(DsiCodeConst.RESULT_WITHEXCPETION_ID, DsiCodeConst.RESULT_WITHEXCPETION, ex);
             }
         }
