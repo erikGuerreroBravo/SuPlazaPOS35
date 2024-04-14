@@ -166,19 +166,78 @@ namespace SuPlazaPOS35.controller
 
         public void setItemSaleRecovery(venta_cancelada_articulo itemRecovery)
         {
-            using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
-            SuPlazaPOS35.domain.vw_oferta vw_oferta = dataClassesPOSDataContext.vw_ofertas.FirstOrDefault(o => o.cod_barras == itemRecovery.cod_barras);
-            saleItem = new SuPlazaPOS35.domain.venta_articulo();
-            saleItem.no_articulo = noItemSale++;
-            saleItem.articulo = dataClassesPOSDataContext.articulo.FirstOrDefault(a => a.cod_barras.Equals(itemRecovery.cod_barras));
-            saleItem.unidad_medida = itemRecovery.unidad_medida;
-            saleItem.cantidad = itemRecovery.cantidad;
-            saleItem.articulo_ofertado = vw_oferta != null;
-            saleItem.precio_regular = itemRecovery.precio_regular;
-            saleItem.cambio_precio = itemRecovery.cambio_precio;
-            saleItem.precio_vta = itemRecovery.precio_vta;
-            saleItem.porcent_desc = itemRecovery.porcent_desc;
-            saleItems.Add(saleItem);
+            #region Codigo Nuevo
+            IVwOfertaBusiness vwOfertaBusiness = new VwOfertaBusiness();
+            Vw_OfertaDM vmOfertaDM=  vwOfertaBusiness.GetFirstOferta(itemRecovery.cod_barras);
+            if (vmOfertaDM is not null)
+            {
+                saleItem = new SuPlazaPOS35.domain.venta_articulo();
+                saleItem.no_articulo = noItemSale++;
+                IArticuloBusiness articuloBusiness = new ArticuloBusiness();
+                DsiCodeTech.Repository.PosCaja.articulo articulo=articuloBusiness.GetArticleByBarCode(itemRecovery.cod_barras);
+                domain.articulo articuloDomain = new domain.articulo();
+                articuloDomain = AutoMapper.Mapper.Map(articulo, articuloDomain);
+                saleItem.articulo = articuloDomain;
+                saleItem.unidad_medida = itemRecovery.unidad_medida;
+                saleItem.cantidad = itemRecovery.cantidad;
+                saleItem.articulo_ofertado = vmOfertaDM != null;
+                saleItem.precio_regular = itemRecovery.precio_regular;
+                saleItem.cambio_precio = itemRecovery.cambio_precio;
+                saleItem.precio_vta = itemRecovery.precio_vta;
+                saleItem.porcent_desc = itemRecovery.porcent_desc;
+                saleItems.Add(saleItem);
+            }
+            #endregion
+
+            #region Codigo Anterior
+            //using SuPlazaPOS35.domain.DataClassesPOSDataContext dataClassesPOSDataContext = new SuPlazaPOS35.domain.DataClassesPOSDataContext();
+            //SuPlazaPOS35.domain.vw_oferta vw_oferta = dataClassesPOSDataContext.vw_ofertas.FirstOrDefault(o => o.cod_barras == itemRecovery.cod_barras);
+            //saleItem = new SuPlazaPOS35.domain.venta_articulo();
+            //saleItem.no_articulo = noItemSale++;
+            //saleItem.articulo = dataClassesPOSDataContext.articulo.FirstOrDefault(a => a.cod_barras.Equals(itemRecovery.cod_barras));
+            //saleItem.unidad_medida = itemRecovery.unidad_medida;
+            //saleItem.cantidad = itemRecovery.cantidad;
+            //saleItem.articulo_ofertado = vw_oferta != null;
+            //saleItem.precio_regular = itemRecovery.precio_regular;
+            //saleItem.cambio_precio = itemRecovery.cambio_precio;
+            //saleItem.precio_vta = itemRecovery.precio_vta;
+            //saleItem.porcent_desc = itemRecovery.porcent_desc;
+            //saleItems.Add(saleItem);
+            #endregion
+
+            #region Mapeo QUE NO SIRVE
+            //saleItem.articulo = new domain.articulo() { 
+            //    cod_barras = articulo.cod_barras,
+            //    cod_asociado = articulo.cod_asociado,
+            //    id_clasificacion = articulo.id_clasificacion,
+            //    cod_interno = articulo.cod_interno,
+            //    descripcion = articulo.descripcion,
+            //    descripcion_corta = articulo.descripcion_corta,
+            //    cantidad_um = articulo.cantidad_um,
+            //    id_unidad = articulo.id_unidad,
+            //    id_proveedor = articulo.id_proveedor,
+            //    precio_compra = articulo.precio_compra,
+            //    utilidad = articulo.utilidad,
+            //    precio_venta = articulo.precio_venta,
+            //    tipo_articulo = articulo.tipo_articulo,
+            //    stock = articulo.stock,
+            //    stock_min = articulo.stock_min,
+            //    stock_max = articulo.stock_max,
+            //    kit_fecha_ini = articulo.kit_fecha_ini,
+            //    kit_fecha_fin = articulo.kit_fecha_fin,
+            //    articulo_disponible = articulo.articulo_disponible,
+            //    kit = articulo.kit,
+            //    fecha_registro = articulo.fecha_registro,
+            //    visible = articulo.visible,
+            //    puntos = articulo.puntos,
+            //    last_update_inventory = articulo.last_update_inventory,
+            //    cve_producto = articulo.cve_producto,
+            //    id_objeto_impuesto = articulo.id_objeto_impuesto,
+            //    //impuestos = articulo.impuestos,
+            //};
+
+            #endregion
+
         }
 
         public static SuPlazaPOS35.domain.articulo findItemByCode(string code)

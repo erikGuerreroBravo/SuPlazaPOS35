@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DsiCodeTech.Mapper.Profiles;
 using SuPlazaPOS35.view;
 
 namespace SuPlazaPOS35
@@ -14,6 +15,7 @@ namespace SuPlazaPOS35
         [STAThread]
         static void Main()
         {
+            AutoMapperProfiles.Run();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(defaultValue: false);
             try

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="30c5105048ce4c6484d115d98375e6e4" Name="Diagram1">
+      <Diagram DiagramId="30c5105048ce4c6484d115d98375e6e4" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="pos_cajaModel.articulo" Width="1.5" PointX="8" PointY="28.125" IsExpanded="true" />
         <EntityTypeShape EntityType="pos_cajaModel.cfdi_objeto_impuesto" Width="1.5" PointX="5.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pos_cajaModel.empleado" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
@@ -57,6 +57,7 @@
         <AssociationConnector Association="pos_cajaModel.fk_usuario_venta" />
         <AssociationConnector Association="pos_cajaModel.fk_venta_articulo" />
         <AssociationConnector Association="pos_cajaModel.fk_venta_devolucion" />
+        <EntityTypeShape EntityType="pos_cajaModel.vw_oferta" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

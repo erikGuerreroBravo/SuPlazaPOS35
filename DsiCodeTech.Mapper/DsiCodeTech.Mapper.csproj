@@ -4,13 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5B141605-59E9-4D68-8C40-D9AE46F37732}</ProjectGuid>
+    <ProjectGuid>{7E09D434-D725-406C-818B-12DC3B9BA74A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DsiCodeTech.Business</RootNamespace>
-    <AssemblyName>DsiCodeTech.Business</AssemblyName>
+    <RootNamespace>DsiCodeTech.Mapper</RootNamespace>
+    <AssemblyName>DsiCodeTech.Mapper</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <LangVersion>10</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -32,12 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DsiCodeTech.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\DsiCodeTech.Common\bin\Debug\DsiCodeTech.Common.dll</HintPath>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,39 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticuloBusiness.cs" />
-    <Compile Include="EmpresaBusiness.cs" />
-    <Compile Include="Interface\IArticuloBusiness.cs" />
-    <Compile Include="Interface\IEmpresaBusiness.cs" />
-    <Compile Include="Interface\IOfertaBusiness.cs" />
-    <Compile Include="Interface\IPosSettingsBusiness.cs" />
-    <Compile Include="Interface\IUsuarioBusiness.cs" />
-    <Compile Include="Interface\IVentaBusiness.cs" />
-    <Compile Include="Interface\IVentaCanceladaBusiness.cs" />
-    <Compile Include="Interface\IVentaDevolucionArticuloBusiness.cs" />
-    <Compile Include="Interface\IVentaDevolucionBusiness.cs" />
-    <Compile Include="Interface\IVwOfertaBusiness.cs" />
-    <Compile Include="OfertaBusiness.cs" />
-    <Compile Include="PosSettingsBusiness.cs" />
+    <Compile Include="Profiles\AutoMapperProfiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioBusiness.cs" />
-    <Compile Include="VentaBusiness.cs" />
-    <Compile Include="VentaCanceladaBusiness.cs" />
-    <Compile Include="VentaDevolucionArticuloBusiness.cs" />
-    <Compile Include="VentaDevolucionBusiness.cs" />
-    <Compile Include="VwOfertaBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DsiCodeTech.Repository\DsiCodeTech.Repository.csproj">
-      <Project>{BF8C6CBB-F93E-4759-B376-6A59EA4A7D5C}</Project>
-      <Name>DsiCodeTech.Repository</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

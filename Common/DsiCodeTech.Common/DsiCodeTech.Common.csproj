@@ -96,6 +96,7 @@
     <Compile Include="DataAccess\Domain\VentaDevolucionArticuloDM.cs" />
     <Compile Include="DataAccess\Domain\VentaDevolucionDM.cs" />
     <Compile Include="DataAccess\Domain\VentaDM.cs" />
+    <Compile Include="DataAccess\Domain\Vw_OfertaDM.cs" />
     <Compile Include="DataAccess\Extensions\PredicateBuilder.cs" />
     <Compile Include="DataAccess\Filter\Page\PageRequest.cs" />
     <Compile Include="DataAccess\Filter\Page\PageResponse.cs" />

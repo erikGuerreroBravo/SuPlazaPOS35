@@ -47,5 +47,6 @@ namespace DsiCodeTech.Repository.PosCaja
         public virtual DbSet<venta_cancelada> venta_cancelada { get; set; }
         public virtual DbSet<venta> venta { get; set; }
         public virtual DbSet<venta_articulo> venta_articulo { get; set; }
+        public virtual DbSet<vw_oferta> vw_oferta { get; set; }
     }
 }

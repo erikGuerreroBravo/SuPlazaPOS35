@@ -141,6 +141,9 @@
     <Compile Include="PosCaja\venta_devolucion_articulo.cs">
       <DependentUpon>PosCaja.tt</DependentUpon>
     </Compile>
+    <Compile Include="PosCaja\vw_oferta.cs">
+      <DependentUpon>PosCaja.tt</DependentUpon>
+    </Compile>
     <Compile Include="PosSettingsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsarioRepository.cs" />
@@ -149,6 +152,7 @@
     <Compile Include="VentaDevolucionArticuloRepository.cs" />
     <Compile Include="VentaDevolucionRepository.cs" />
     <Compile Include="VentaRepository.cs" />
+    <Compile Include="Vw_OfertaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

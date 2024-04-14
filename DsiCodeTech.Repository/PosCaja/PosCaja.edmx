@@ -94,9 +94,6 @@
           <Property Name="iva" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="ieps" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="fecha_registro" Type="datetime" Nullable="false" />
-          <Property Name="subtotal" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-          <Property Name="iva_desglosado" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-          <Property Name="ieps_desglosado" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="oferta">
           <Key>
@@ -242,11 +239,6 @@
           <Property Name="num_registros" Type="smallint" Nullable="false" />
           <Property Name="pago_td" Type="decimal" Precision="19" Scale="2" Nullable="false" />
           <Property Name="pago_spei" Type="decimal" Precision="19" Scale="2" Nullable="false" />
-          <Property Name="subtotal" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-          <Property Name="iva_desglosado" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-          <Property Name="ieps_desglosado" Type="decimal" Precision="19" Scale="6" Nullable="false" />
-          <Property Name="impuestos" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-          <Property Name="descuento" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="venta_articulo">
           <Key>
@@ -265,7 +257,7 @@
           <Property Name="cambio_precio" Type="bit" Nullable="false" />
           <Property Name="iva" Type="decimal" Precision="4" Scale="3" Nullable="false" />
           <Property Name="precio_vta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-          <Property Name="porcent_desc" Type="decimal" Precision="10" Scale="6" Nullable="false" />
+          <Property Name="porcent_desc" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="cant_devuelta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="user_name" Type="varchar" MaxLength="15" />
           <Property Name="id_promo" Type="uniqueidentifier" />
@@ -329,8 +321,6 @@
           <Property Name="supervisor" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="cant_dev" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="upload" Type="bit" Nullable="false" />
-          <Property Name="impuestos" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-          <Property Name="descuento" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="venta_devolucion_articulo">
           <Key>
@@ -342,6 +332,16 @@
           <Property Name="no_articulo" Type="bigint" Nullable="false" />
           <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'pos_caja.dbo.vw_oferta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_oferta">
+          <Key>
+            <PropertyRef Name="cod_barras" />
+            <PropertyRef Name="precio_oferta" />
+          </Key>
+          <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="precio_oferta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
         <Association Name="Fk_articulo_objetoimpuesto">
           <End Role="cfdi_objeto_impuesto" Type="Self.cfdi_objeto_impuesto" Multiplicity="0..1" />
@@ -734,6 +734,12 @@
           <EntitySet Name="venta_cancelada_articulo" EntityType="Self.venta_cancelada_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="venta_devolucion" EntityType="Self.venta_devolucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="venta_devolucion_articulo" EntityType="Self.venta_devolucion_articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_oferta" EntityType="Self.vw_oferta" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_oferta].[cod_barras] AS [cod_barras], 
+    [vw_oferta].[precio_oferta] AS [precio_oferta]
+    FROM [dbo].[vw_oferta] AS [vw_oferta]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="Fk_articulo_objetoimpuesto" Association="Self.Fk_articulo_objetoimpuesto">
             <End Role="cfdi_objeto_impuesto" EntitySet="cfdi_objeto_impuesto" />
             <End Role="articulo" EntitySet="articulo" />
@@ -1532,6 +1538,7 @@
             <End Role="venta" EntitySet="venta" />
             <End Role="venta_devolucion" EntitySet="venta_devolucion" />
           </AssociationSet>
+          <EntitySet Name="vw_oferta" EntityType="pos_cajaModel.vw_oferta" />
           </EntityContainer>
         <EntityType Name="venta_cancelada">
           <Key>
@@ -1656,7 +1663,7 @@
           <Property Name="cambio_precio" Type="Boolean" Nullable="false" />
           <Property Name="iva" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
           <Property Name="precio_vta" Type="Decimal" Nullable="false" Precision="19" Scale="3" />
-          <Property Name="porcent_desc" Type="Decimal" Nullable="false" Precision="10" Scale="6" />
+          <Property Name="porcent_desc" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
           <Property Name="cant_devuelta" Type="Decimal" Nullable="false" Precision="19" Scale="3" />
           <Property Name="user_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="id_promo" Type="Guid" />
@@ -1769,6 +1776,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vw_oferta">
+          <Key>
+            <PropertyRef Name="cod_barras" />
+            <PropertyRef Name="precio_oferta" />
+          </Key>
+          <Property Name="cod_barras" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="precio_oferta" Type="Decimal" Nullable="false" Precision="19" Scale="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1861,9 +1876,6 @@
           <EntitySetMapping Name="impuestos">
             <EntityTypeMapping TypeName="pos_cajaModel.impuestos">
               <MappingFragment StoreEntitySet="impuestos">
-                <ScalarProperty Name="ieps_desglosado" ColumnName="ieps_desglosado" />
-                <ScalarProperty Name="iva_desglosado" ColumnName="iva_desglosado" />
-                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -2029,8 +2041,6 @@
           <EntitySetMapping Name="venta_devolucion">
             <EntityTypeMapping TypeName="pos_cajaModel.venta_devolucion">
               <MappingFragment StoreEntitySet="venta_devolucion">
-                <ScalarProperty Name="descuento" ColumnName="descuento" />
-                <ScalarProperty Name="impuestos" ColumnName="impuestos" />
                 <ScalarProperty Name="id_devolucion" ColumnName="id_devolucion" />
                 <ScalarProperty Name="folio" ColumnName="folio" />
                 <ScalarProperty Name="id_pos" ColumnName="id_pos" />
@@ -2076,11 +2086,6 @@
           <EntitySetMapping Name="venta">
             <EntityTypeMapping TypeName="pos_cajaModel.venta">
               <MappingFragment StoreEntitySet="venta">
-                <ScalarProperty Name="descuento" ColumnName="descuento" />
-                <ScalarProperty Name="impuestos" ColumnName="impuestos" />
-                <ScalarProperty Name="ieps_desglosado" ColumnName="ieps_desglosado" />
-                <ScalarProperty Name="iva_desglosado" ColumnName="iva_desglosado" />
-                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
                 <ScalarProperty Name="pago_spei" ColumnName="pago_spei" />
                 <ScalarProperty Name="pago_td" ColumnName="pago_td" />
                 <ScalarProperty Name="num_registros" ColumnName="num_registros" />
@@ -2120,6 +2125,14 @@
                 <ScalarProperty Name="no_articulo" ColumnName="no_articulo" />
                 <ScalarProperty Name="id_venta" ColumnName="id_venta" />
                 <ScalarProperty Name="id_pos" ColumnName="id_pos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_oferta">
+            <EntityTypeMapping TypeName="pos_cajaModel.vw_oferta">
+              <MappingFragment StoreEntitySet="vw_oferta">
+                <ScalarProperty Name="precio_oferta" ColumnName="precio_oferta" />
+                <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
