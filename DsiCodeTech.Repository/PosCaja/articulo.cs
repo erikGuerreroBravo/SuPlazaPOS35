@@ -20,8 +20,8 @@ namespace DsiCodeTech.Repository.PosCaja
             this.oferta_articulo = new HashSet<oferta_articulo>();
             this.promocion_articulo = new HashSet<promocion_articulo>();
             this.venta_cancelada_articulo = new HashSet<venta_cancelada_articulo>();
-            this.impuestos = new HashSet<impuestos>();
             this.venta_articulo = new HashSet<venta_articulo>();
+            this.impuestos = new HashSet<impuestos>();
         }
     
         public string cod_barras { get; set; }
@@ -58,10 +58,10 @@ namespace DsiCodeTech.Repository.PosCaja
         public virtual ICollection<promocion_articulo> promocion_articulo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta_cancelada_articulo> venta_cancelada_articulo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<impuestos> impuestos { get; set; }
         public virtual unidad_medida unidad_medida { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta_articulo> venta_articulo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<impuestos> impuestos { get; set; }
     }
 }

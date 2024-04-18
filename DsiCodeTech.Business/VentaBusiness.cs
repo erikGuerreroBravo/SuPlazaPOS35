@@ -59,11 +59,14 @@ namespace DsiCodeTech.Business
                     NumRegistros = venta.num_registros,
                     PagoTarDebito = venta.pago_td,
                     PagoSpei = venta.pago_spei,
-                    Subtotal = venta.subtotal,
-                    IvaDesglosado = venta.iva_desglosado,
-                    Impuestos = venta.impuestos,
-                    IepsDesglosado = venta.ieps_desglosado,
-                    Descuento = venta.descuento, 
+                  /////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+                    //Subtotal = venta.subtotal,
+                    //IvaDesglosado = venta.iva_desglosado,
+                    //Impuestos = venta.impuestos,
+                    //IepsDesglosado = venta.ieps_desglosado,
+                    //Descuento = venta.descuento, 
+                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+                    
                     VentaArticulos = venta.venta_articulo is null ? null : venta.venta_articulo.Select(va => new VentaArticuloDM()
                     {
                         IdPos = va.id_pos,

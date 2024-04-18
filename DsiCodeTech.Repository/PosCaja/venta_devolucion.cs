@@ -29,13 +29,11 @@ namespace DsiCodeTech.Repository.PosCaja
         public string supervisor { get; set; }
         public decimal cant_dev { get; set; }
         public bool upload { get; set; }
-        public decimal impuestos { get; set; }
-        public decimal descuento { get; set; }
     
         public virtual usuario usuario { get; set; }
         public virtual usuario usuario1 { get; set; }
+        public virtual venta venta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta_devolucion_articulo> venta_devolucion_articulo { get; set; }
-        public virtual venta venta { get; set; }
     }
 }

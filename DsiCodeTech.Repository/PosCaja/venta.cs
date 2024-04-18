@@ -35,11 +35,6 @@ namespace DsiCodeTech.Repository.PosCaja
         public short num_registros { get; set; }
         public decimal pago_td { get; set; }
         public decimal pago_spei { get; set; }
-        public decimal subtotal { get; set; }
-        public decimal iva_desglosado { get; set; }
-        public decimal ieps_desglosado { get; set; }
-        public decimal impuestos { get; set; }
-        public decimal descuento { get; set; }
     
         public virtual pos_settings pos_settings { get; set; }
         public virtual usuario usuario { get; set; }

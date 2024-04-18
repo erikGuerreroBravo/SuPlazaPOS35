@@ -230,6 +230,8 @@ namespace SuPlazaPOS35.view
         {
             using DataClassesPOSDataContext dataClassesPOSDataContext = new DataClassesPOSDataContext();
             DevicesOPOS.showMessageDisplay(((DateTime.Now.Hour < 12) ? "Buenos días" : ((DateTime.Now.Hour < 20) ? "Buenas tardes" : "Buenas noches")) + " Atde:", dataClassesPOSDataContext.empleado.FirstOrDefault((SuPlazaPOS35.domain.empleado e) => e.usuario.Equals(POS.user)).shortName());
+            
+
         }
 
         private void scannerOnEventInfo(object sender, DataEventArgs e)

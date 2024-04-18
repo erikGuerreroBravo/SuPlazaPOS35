@@ -20,8 +20,6 @@ namespace DsiCodeTech.Repository.PosCaja
             this.empleado = new HashSet<empleado>();
             this.oferta = new HashSet<oferta>();
             this.pos_control = new HashSet<pos_control>();
-            this.venta_devolucion = new HashSet<venta_devolucion>();
-            this.venta_devolucion1 = new HashSet<venta_devolucion>();
             this.usuario_permiso = new HashSet<usuario_permiso>();
             this.venta_cancelada_articulo = new HashSet<venta_cancelada_articulo>();
             this.venta_cancelada = new HashSet<venta_cancelada>();
@@ -29,6 +27,8 @@ namespace DsiCodeTech.Repository.PosCaja
             this.venta_articulo = new HashSet<venta_articulo>();
             this.venta = new HashSet<venta>();
             this.venta1 = new HashSet<venta>();
+            this.venta_devolucion = new HashSet<venta_devolucion>();
+            this.venta_devolucion1 = new HashSet<venta_devolucion>();
         }
     
         public string user_name { get; set; }
@@ -45,10 +45,6 @@ namespace DsiCodeTech.Repository.PosCaja
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pos_control> pos_control { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<venta_devolucion> venta_devolucion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<venta_devolucion> venta_devolucion1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<usuario_permiso> usuario_permiso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta_cancelada_articulo> venta_cancelada_articulo { get; set; }
@@ -62,5 +58,9 @@ namespace DsiCodeTech.Repository.PosCaja
         public virtual ICollection<venta> venta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta> venta1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<venta_devolucion> venta_devolucion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<venta_devolucion> venta_devolucion1 { get; set; }
     }
 }

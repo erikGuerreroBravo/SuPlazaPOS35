@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using DsiCodeTech.Mapper.Profiles;
+using SuPlazaPOS35.Infraestructure;
 using SuPlazaPOS35.view;
 
 namespace SuPlazaPOS35

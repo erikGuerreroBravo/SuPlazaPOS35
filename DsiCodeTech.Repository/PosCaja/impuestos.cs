@@ -20,9 +20,6 @@ namespace DsiCodeTech.Repository.PosCaja
         public decimal iva { get; set; }
         public decimal ieps { get; set; }
         public System.DateTime fecha_registro { get; set; }
-        public decimal subtotal { get; set; }
-        public decimal iva_desglosado { get; set; }
-        public decimal ieps_desglosado { get; set; }
     
         public virtual articulo articulo { get; set; }
     }

@@ -30,7 +30,6 @@ namespace DsiCodeTech.Repository.PosCaja
         public virtual DbSet<empleado> empleado { get; set; }
         public virtual DbSet<empresa> empresa { get; set; }
         public virtual DbSet<factura_venta> factura_venta { get; set; }
-        public virtual DbSet<impuestos> impuestos { get; set; }
         public virtual DbSet<oferta> oferta { get; set; }
         public virtual DbSet<oferta_articulo> oferta_articulo { get; set; }
         public virtual DbSet<permiso> permiso { get; set; }
@@ -42,11 +41,12 @@ namespace DsiCodeTech.Repository.PosCaja
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<usuario_permiso> usuario_permiso { get; set; }
         public virtual DbSet<venta_cancelada_articulo> venta_cancelada_articulo { get; set; }
-        public virtual DbSet<venta_devolucion> venta_devolucion { get; set; }
         public virtual DbSet<venta_devolucion_articulo> venta_devolucion_articulo { get; set; }
         public virtual DbSet<venta_cancelada> venta_cancelada { get; set; }
-        public virtual DbSet<venta> venta { get; set; }
         public virtual DbSet<venta_articulo> venta_articulo { get; set; }
         public virtual DbSet<vw_oferta> vw_oferta { get; set; }
+        public virtual DbSet<venta> venta { get; set; }
+        public virtual DbSet<venta_devolucion> venta_devolucion { get; set; }
+        public virtual DbSet<impuestos> impuestos { get; set; }
     }
 }
